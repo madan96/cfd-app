@@ -1,0 +1,31 @@
+{
+    "headline":"No immediate plans to further cut import duty on wheat: Government",
+    "news":"On September 23, import duty on wheat was reduced to 10 per cent from 25 per cent to boost supplies and check prices during Dusshera and Diwali festivals."
+}{
+    "headline":"Maharashtra occupies top slot in farmer friendly policies: NITI Aayog",
+    "news":"The Aayog's 'Agriculture Marketing and Farmer Friendly Reforms Index' was based on initiatives taken by the states in implementing farm sector reforms."
+}{
+    "headline":"Experts raise doubts over promised bounty of genetically modified crops",
+    "news":"Genetic modification has not accelerated rise in crop yields or led to an overall reduction in use of chemical pesticides."
+}{
+    "headline":"After financial inclusion, Grameen Foundation wants to help increase farm incomes",
+    "news":"The foundation said it is also keen to educate people, especially the poor, about the relevance of services they get and also study how these services change their behaviour."
+}{
+    "headline":"Agriculture ministry working with ICAR to meet pulse shortage",
+    "news":"They are also working on improving vegetable oil production, Singh said while addressing members of the consultative committee."
+}{
+    "headline":"Maharashtra, Karnataka cane farmers to demand Rs 3200/tonne as first installment",
+    "news":"The millers, who are concerned as the government has been keeping sugar prices controlled and have to repay sift loan of Rs 6000 crore."
+}{
+    "headline":"Govt targets 50% jump in pulses output by in four years",
+    "news":"The country imported Rs 69,717 crore worth of edible oils and Rs 18,000 crore worth of pulses during last fiscal to meet domestic demand."
+}{
+    "headline":"Investor appetite for food, agriculture business hits 5-yr low in 2016: Report",
+    "news":"Dairy and poultry sector has been the only segment to witness a growth of 120 per cent with investments amounting to $33 million in 2016 in two deals, the report said."
+}{
+    "headline":"120 organisations to protest at Jantar Mantar to oppose GM mustard",
+    "news":"Kuruganti said more than 10 organisations from Gujarat are also expected to take part in the protest."
+}{
+    "headline":"Agriculture Ministry prepares contract farming act",
+    "news":"The agriculture ministry in consultation with states and government's think tank NITI Aayog will come out with a separate Contract Farming Act, along the lines of that in Punjab."
+}
