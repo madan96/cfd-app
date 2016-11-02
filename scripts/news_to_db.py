@@ -2,11 +2,12 @@ import urllib2
 import re
 from azure.storage.table import TableService, Entity
 from bs4 import BeautifulSoup
+import json
 
 base_url = 'http://economictimes.indiatimes.com/news/economy/agriculture'
 
 def extract_news():
-	
+	new = []
 	bd = urllib2.Request(base_url, headers={'User-Agent' : "Magic Browser"}) 
 	req = urllib2.urlopen(bd)
 	data = BeautifulSoup(req.read(),"lxml")
@@ -18,24 +19,30 @@ def extract_news():
 	for i in range(0,10):
 		news_data_list[i] = pattern.findall(str(news_data_list[i]))[0]
 
-
-	table_service = TableService(account_name='newsaggregate', account_key='Im/sg8ePug9VWN14eZNbrMN10QCQC6s+spgO9JuYSRwa2wWwe1SrPQZ7nu+nEdt+dz/Mb/sBfIh3SUUU20QloQ==')
-	table_service.create_table('newstable')
-	task = Entity()
 	taglines = []
+	links = []
 	for news in news_list:
 		tag = news.find('h3')
+
 		try:
 			taglines.append(tag.find('a').text)
+			links.append(base_url + '/' + tag.find('a').get('href'))
 		except AttributeError:
 			pass
 
-	i=1
+	i=0
 
 	for tagline in taglines:
-		task = {'PartitionKey': 'newstagline', 'RowKey': str(i), 'taglines' : str(tagline), 'news' : str(news_data_list[i-1])}
-		table_service.insert_or_replace_entity('newstable', 'newstagline', str(k), task, content_type='application/atom+xml')
+		obj = {}
+		obj['headline'] = str(tagline)
+		obj['news'] = str(news_data_list[i])
+		obj['link'] = str(links[i])
+		new.append(obj)
 		i+=1
+
+	with open('newsdata.txt', 'w') as outfile:
+		json.dump(new, 	outfile, indent=4, sort_keys=True, separators=(',', ':'))
+
 
 def main():
 	extract_news()

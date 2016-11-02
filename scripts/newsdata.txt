@@ -1,31 +1,52 @@
-{
-    "headline":"No immediate plans to further cut import duty on wheat: Government",
-    "news":"On September 23, import duty on wheat was reduced to 10 per cent from 25 per cent to boost supplies and check prices during Dusshera and Diwali festivals."
-}{
-    "headline":"Maharashtra occupies top slot in farmer friendly policies: NITI Aayog",
-    "news":"The Aayog's 'Agriculture Marketing and Farmer Friendly Reforms Index' was based on initiatives taken by the states in implementing farm sector reforms."
-}{
-    "headline":"Experts raise doubts over promised bounty of genetically modified crops",
-    "news":"Genetic modification has not accelerated rise in crop yields or led to an overall reduction in use of chemical pesticides."
-}{
-    "headline":"After financial inclusion, Grameen Foundation wants to help increase farm incomes",
-    "news":"The foundation said it is also keen to educate people, especially the poor, about the relevance of services they get and also study how these services change their behaviour."
-}{
-    "headline":"Agriculture ministry working with ICAR to meet pulse shortage",
-    "news":"They are also working on improving vegetable oil production, Singh said while addressing members of the consultative committee."
-}{
-    "headline":"Maharashtra, Karnataka cane farmers to demand Rs 3200/tonne as first installment",
-    "news":"The millers, who are concerned as the government has been keeping sugar prices controlled and have to repay sift loan of Rs 6000 crore."
-}{
-    "headline":"Govt targets 50% jump in pulses output by in four years",
-    "news":"The country imported Rs 69,717 crore worth of edible oils and Rs 18,000 crore worth of pulses during last fiscal to meet domestic demand."
-}{
-    "headline":"Investor appetite for food, agriculture business hits 5-yr low in 2016: Report",
-    "news":"Dairy and poultry sector has been the only segment to witness a growth of 120 per cent with investments amounting to $33 million in 2016 in two deals, the report said."
-}{
-    "headline":"120 organisations to protest at Jantar Mantar to oppose GM mustard",
-    "news":"Kuruganti said more than 10 organisations from Gujarat are also expected to take part in the protest."
-}{
-    "headline":"Agriculture Ministry prepares contract farming act",
-    "news":"The agriculture ministry in consultation with states and government's think tank NITI Aayog will come out with a separate Contract Farming Act, along the lines of that in Punjab."
-}
+[
+    {
+        "headline":"Cabinet may hike rabi pulses minimum support price by up to Rs 600/quintal",
+        "link":"http://economictimes.indiatimes.com/news/economy/agriculture//news/economy/agriculture/cabinet-may-hike-rabi-pulses-minimum-support-price-by-up-to-rs-600/quintal/articleshow/55185716.cms",
+        "news":"Barring pulses, the ministry has accepted all the recommendations of the Commission for Agricultural Costs and Prices (CACP) for the 2016-17 winter crops."
+    },
+    {
+        "headline":"Will face any challenge to protect farmers' interests: Balyan",
+        "link":"http://economictimes.indiatimes.com/news/economy/agriculture//news/economy/agriculture/will-face-any-challenge-to-protect-farmers-interests-balyan/articleshow/55184084.cms",
+        "news":"The BJP leader was present at a meeting of farmers here last evening, in which a decision was taken to not supply the cane crop to Titawi sugar mill which owes Rs 150 crores to farmers."
+    },
+    {
+        "headline":"No immediate plans to further cut import duty on wheat: Government",
+        "link":"http://economictimes.indiatimes.com/news/economy/agriculture//news/economy/agriculture/no-immediate-plans-to-further-cut-import-duty-on-wheat-government/articleshow/55180930.cms",
+        "news":"On September 23, import duty on wheat was reduced to 10 per cent from 25 per cent to boost supplies and check prices during Dusshera and Diwali festivals."
+    },
+    {
+        "headline":"Maharashtra occupies top slot in farmer friendly policies: NITI Aayog",
+        "link":"http://economictimes.indiatimes.com/news/economy/agriculture//news/economy/agriculture/maharashtra-occupies-top-slot-in-farmer-friendly-policies-niti-aayog/articleshow/55156050.cms",
+        "news":"The Aayog's 'Agriculture Marketing and Farmer Friendly Reforms Index' was based on initiatives taken by the states in implementing farm sector reforms."
+    },
+    {
+        "headline":"Experts raise doubts over promised bounty of genetically modified crops",
+        "link":"http://economictimes.indiatimes.com/news/economy/agriculture//news/economy/agriculture/experts-raise-doubts-over-promised-bounty-of-genetically-modified-crops/articleshow/55145991.cms",
+        "news":"Genetic modification has not accelerated rise in crop yields or led to an overall reduction in use of chemical pesticides."
+    },
+    {
+        "headline":"After financial inclusion, Grameen Foundation wants to help increase farm incomes",
+        "link":"http://economictimes.indiatimes.com/news/economy/agriculture//news/economy/agriculture/after-financial-inclusion-grameen-foundation-wants-to-help-increase-farm-incomes/articleshow/55116438.cms",
+        "news":"The foundation said it is also keen to educate people, especially the poor, about the relevance of services they get and also study how these services change their behaviour."
+    },
+    {
+        "headline":"Agriculture ministry working with ICAR to meet pulse shortage",
+        "link":"http://economictimes.indiatimes.com/news/economy/agriculture//news/economy/agriculture/agriculture-ministry-working-with-icar-to-meet-pulse-shortage/articleshow/55056340.cms",
+        "news":"They are also working on improving vegetable oil production, Singh said while addressing members of the consultative committee."
+    },
+    {
+        "headline":"Maharashtra, Karnataka cane farmers to demand Rs 3200/tonne as first installment",
+        "link":"http://economictimes.indiatimes.com/news/economy/agriculture//news/economy/agriculture/maharashtra-karnataka-cane-farmers-to-demand-rs-3200/tonne-as-first-installment/articleshow/55054870.cms",
+        "news":"The millers, who are concerned as the government has been keeping sugar prices controlled and have to repay sift loan of Rs 6000 crore."
+    },
+    {
+        "headline":"Govt targets 50% jump in pulses output by in four years",
+        "link":"http://economictimes.indiatimes.com/news/economy/agriculture//news/economy/agriculture/govt-targets-50-jump-in-pulses-output-by-in-four-years/articleshow/55053198.cms",
+        "news":"The country imported Rs 69,717 crore worth of edible oils and Rs 18,000 crore worth of pulses during last fiscal to meet domestic demand."
+    },
+    {
+        "headline":"Investor appetite for food, agriculture business hits 5-yr low in 2016: Report",
+        "link":"http://economictimes.indiatimes.com/news/economy/agriculture//news/economy/agriculture/investor-appetite-for-food-agriculture-business-hits-5-yr-low-in-2016-report/articleshow/55028781.cms",
+        "news":"Dairy and poultry sector has been the only segment to witness a growth of 120 per cent with investments amounting to $33 million in 2016 in two deals, the report said."
+    }
+]

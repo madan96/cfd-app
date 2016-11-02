@@ -2,15 +2,15 @@ import urllib2
 import re
 from azure.storage.table import TableService, Entity
 from bs4 import BeautifulSoup
+import json
 
 base_url = 'http://kisaankranti.com/'
 params = ['fertilizer', 'pesticide', 'seeds']
 
 def extract_products():
-	table_service = TableService(account_name='pricekeeper', account_key='++V/62CPdKa1MaTiwYVzKWCUpXUfkWZSBJgO4SI6g/NIZ1GkBRixXWvguYxVvb/dpFMkxoI9SYDxwTTS/jTmqw==')
-	table_service.create_table('pricetable')
-	task = Entity()
+	
 	k=1
+	price = []
 	for param in params:	
 		url = base_url + param + '.html'
 		bd = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"}) 
@@ -33,11 +33,18 @@ def extract_products():
 
 		m=0
 		for product in products:
-			task = {'PartitionKey': 'pricetab', 'RowKey': str(k), 'producttype' : param, 'productname' : str(product), 'pricet' : prices[m], 'link' : links[m]}
-			able_service.insert_or_replace_entity('pricetable', 'pricetab', str(k), task, content_type='application/atom+xml')
+			obj = {}
+			obj['producttype'] = param
+			obj['productname'] = str(product)
+			obj['pricet'] = "Rs " + prices[m]
+			obj['link'] = links[m]
+			price.append(obj)
 			m+=1
 			k+=1
 			
+	with open('pricedata.txt', 'w') as outfile:
+		json.dump(price, 	outfile, indent=4, sort_keys=True, separators=(',', ':'))
+
 
 def main():
 	extract_products()
