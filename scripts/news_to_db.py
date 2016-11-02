@@ -34,7 +34,7 @@ def extract_news():
 
 	for tagline in taglines:
 		task = {'PartitionKey': 'newstagline', 'RowKey': str(i), 'taglines' : str(tagline), 'news' : str(news_data_list[i-1])}
-		table_service.insert_or_replace_entity('newstable', task)
+		table_service.insert_or_replace_entity('newstable', 'newstagline', str(k), task, content_type='application/atom+xml')
 		i+=1
 
 def main():

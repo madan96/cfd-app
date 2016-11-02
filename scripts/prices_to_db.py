@@ -34,7 +34,7 @@ def extract_products():
 		m=0
 		for product in products:
 			task = {'PartitionKey': 'pricetab', 'RowKey': str(k), 'producttype' : param, 'productname' : str(product), 'pricet' : prices[m], 'link' : links[m]}
-			table_service.insert_or_replace_entity('pricetable', task)
+			able_service.insert_or_replace_entity('pricetable', 'pricetab', str(k), task, content_type='application/atom+xml')
 			m+=1
 			k+=1
 			
