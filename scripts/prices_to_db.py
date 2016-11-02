@@ -19,8 +19,12 @@ def extract_products():
 		details_area = data.find_all("div",{"class":"details-area"})
 		products = [] 
 		prices = []
+		links = []
 		for detail in details_area:
 			products.append(str(detail.find("h2", {"class":"product-name"}).text))
+			atag =  detail.find("h2", {"class":"product-name"}).findAll('a')
+			for link in atag:
+				links.append(link.get('href'))
 			prices.append(detail.find("span", id=lambda x: x and x.startswith('product-')).text)
 
 		for i in range(0,len(prices)):
@@ -29,7 +33,7 @@ def extract_products():
 
 		m=0
 		for product in products:
-			task = {'PartitionKey': 'pricetab', 'RowKey': str(k), 'producttype' : param, 'productname' : str(product), 'pricet' : prices[m]}
+			task = {'PartitionKey': 'pricetab', 'RowKey': str(k), 'producttype' : param, 'productname' : str(product), 'pricet' : prices[m], 'link' : links[m]}
 			table_service.insert_or_replace_entity('pricetable', task)
 			m+=1
 			k+=1
