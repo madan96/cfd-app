@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import MySQLdb
 import traceback
 import json
+import label_image
 #from werkzeug.datastructures import ImmutableMultiDict
 app = Flask(__name__)
 cursor = None
@@ -113,6 +114,7 @@ def upload_file():
 	   f = request.files['file']
 	   try :
 		f.save("/home/snorloks/cfd-app/models/testing/img.jpeg")
+		label_image.main()
 		return jsonify({"status":1})
 	   except :
 		return jsonify({"status":0})
