@@ -2,8 +2,8 @@ from flask import Flask, request, jsonify
 import MySQLdb
 import traceback
 import json
-import label_image
-import tagCheck
+# import label_image
+# import tagCheck
 #from werkzeug.datastructures import ImmutableMultiDict
 app = Flask(__name__)
 cursor = None
@@ -131,4 +131,11 @@ def upload_file():
 
 
 if __name__ == '__main__':
-	app.run(port=8000,debug=True)
+	try :
+		app.run(port=8000,debug=True)
+	except Exception as e:
+		if e[0] == 48 :
+			print "Address already in use"
+		else :
+			app.run(port=8000,debug=True)
+			print "Got the following error:\n{} ".format(traceback.format_exc())
