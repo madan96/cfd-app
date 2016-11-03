@@ -24,8 +24,12 @@ def main() :
         
         # Sort to show labels of first prediction in order of confidence
         top_k = predictions[0].argsort()[-len(predictions[0]):][::-1]
-        
+        list_return = list()
         for node_id in top_k:
             human_string = label_lines[node_id]
             score = predictions[0][node_id]
-            print('%s (score = %.5f)' % (human_string, score))
+            score = score*100
+            print('%s (score = %.2f)' % (human_string, score))
+            list_return.append({"disease" : human_string , "score" : "%.2f" % score})
+        return list_return
+

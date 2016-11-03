@@ -69,32 +69,26 @@ def price():
 	user_request=request.form.to_dict()
 	price_data = json.load(open('pricedata.txt' , 'r'))
 	if user_request['request'] == 'pesticide' :
-		i=0
-		return_dict = dict()
-		print "User requested pesticide"
+		print "User reqested pesticide"
+		return_list = list()
 		for data in price_data :
 			if data['producttype'] == 'pesticide' :
-				return_dict[i] = data
-				i+=1
-		return jsonify(return_dict)
+				return_list.append(data)
+		return jsonify({"data" : return_list})
 	elif user_request['request'] == 'fertilizer' :
-		i=0
-		return_dict = dict()
+		return_list = list()
 		print "User requested fertilizer"
 		for data in price_data :
 			if data['producttype'] == 'fertilizer' :
-				return_dict[i] = data
-				i+=1
-		return jsonify(return_dict)
+				return_list.append(data)
+		return jsonify({"data" : return_list})
 	elif user_request['request'] == 'seed' :
-		i=0
-		return_dict = dict()
+		return_list = list()
 		print "User requested seed"
 		for data in price_data :
 			if data['producttype'] == 'seeds' :
-				return_dict[i] = data
-				i+=1
-		return jsonify(return_dict)
+				return_list.append(data)
+		return jsonify({"data" : return_list})
 
 
 @app.route('/check/<uuid>', methods=['GET', 'POST'])
@@ -107,16 +101,24 @@ def add_message(uuid):
 	return jsonify({"uuid":uuid})
 
 
+@app.route('/news', methods=['GET', 'POST'])
+def news() :
+	news_data = json.load(open('newsdata.txt' , 'r'))
+	return jsonify({"data":news_data})
+
 @app.route('/uploader', methods = ['GET', 'POST'])
 def upload_file():
 	print "Got a file"
 	if request.method == 'POST':
 	   f = request.files['file']
 	   try :
+	   	return_dict = dict()
 		f.save("/home/snorloks/cfd-app/models/testing/img.jpeg")
-		label_image.main()
-		return jsonify({"status":1})
+		return_dict["data"] = label_image.main()
+		return_dict["status"] = 1
+		return jsonify(return_dict)
 	   except :
+	   	print traceback.format_exc()
 		return jsonify({"status":0})
 
 	   

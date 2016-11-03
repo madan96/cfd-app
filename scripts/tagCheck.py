@@ -110,7 +110,7 @@ if result is not None:
 
 def main():
     # Load raw image file into memory
-    pathToFileInDisk = r'/home/rishabh/Downloads/FREC_Scab_3347_resized.JPG?1445261100'
+    pathToFileInDisk = r"/home/snorloks/cfd-app/models/testing/img.jpeg"
     with open(pathToFileInDisk, 'rb') as f:
         data = f.read()
 
