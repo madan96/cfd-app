@@ -12,44 +12,86 @@
     android:gravity="center"
     tools:context=".activities.MainPage">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#fff"
-        android:background="@android:color/transparent"
-        android:text="Find Disease"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
         android:padding="16dp"
-        android:layout_margin="4dp"
-        android:textStyle="bold"
-        android:id="@+id/b_find_disease"
-        android:layout_alignParentTop="true"
-        android:textAppearance="@android:style/TextAppearance.Medium"
-        android:layout_centerHorizontal="true" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance.Medium"
-        android:text="Check Prices"
-        android:padding="16dp"
-        android:layout_margin="4dp"
-        android:textColor="#fff"
-        android:textStyle="bold"
-        android:background="@android:color/transparent"
-        android:id="@+id/b_prices"
-        android:layout_below="@+id/b_find_disease" />
+        android:layout_height="wrap_content">
 
-    <Button
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/agricheck"
+            android:id="@+id/agricheck"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Check disease"
+            android:id="@+id/tvAgricheck"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:textColor="#fff"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Krishi News"
-        android:textAppearance="@android:style/TextAppearance.Medium"
-        android:padding="16dp"
-        android:layout_margin="4dp"
-        android:textStyle="bold"
-        android:textColor="#fff"
-        android:background="@android:color/transparent"
-        android:id="@+id/bNews"
-        android:layout_below="@+id/b_prices"
-        android:layout_alignStart="@+id/b_find_disease" />
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:padding="16dp"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/agrimart"
+                android:id="@+id/agrimart"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AgriMart"
+                android:id="@+id/tvAgrimart"
+                android:gravity="center"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:background="@android:color/transparent"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:padding="16dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/agrinews"
+                android:id="@+id/agrinews"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Krishi news"
+                android:id="@+id/tvAgrinews"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:textColor="#fff"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

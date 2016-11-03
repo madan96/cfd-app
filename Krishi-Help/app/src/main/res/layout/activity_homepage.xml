@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainbackground"
+    >
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#7000"
+        />
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="bottom"
-    android:background="@drawable/mainbackground"
     android:orientation="vertical">
 
 
@@ -24,6 +35,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
+        android:textColorHint="#ddd"
+        android:textColor="#fff"
         android:hint="Email"
         android:visibility="gone"
         android:ems="10"
@@ -35,6 +48,8 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:visibility="gone"
+        android:textColorHint="#ddd"
+        android:textColor="#fff"
         android:hint="Password"
         android:ems="10"
         android:id="@+id/et_login_pass"
@@ -47,6 +62,8 @@
         android:inputType="textPersonName"
         android:visibility="gone"
         android:hint="First Name"
+        android:textColorHint="#ddd"
+        android:textColor="#fff"
         android:ems="10"
         android:id="@+id/et_f_name"
         android:layout_gravity="center_horizontal" />
@@ -56,6 +73,8 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:visibility="gone"
+        android:textColorHint="#ddd"
+        android:textColor="#fff"
         android:hint="Last Name"
         android:ems="10"
         android:id="@+id/et_l_name"
@@ -65,6 +84,8 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:hint="Email"
+        android:textColorHint="#ddd"
+        android:textColor="#fff"
         android:visibility="gone"
         android:ems="10"
         android:id="@+id/et_email"
@@ -76,6 +97,8 @@
         android:visibility="gone"
         android:hint="Contact Number"
         android:ems="10"
+        android:textColorHint="#ddd"
+        android:textColor="#fff"
         android:id="@+id/et_contact_no"
         android:layout_gravity="center_horizontal" />
 
@@ -86,6 +109,8 @@
         android:hint="Password"
         android:visibility="gone"
         android:ems="10"
+        android:textColorHint="#ddd"
+        android:textColor="#fff"
         android:id="@+id/et_password"
         android:layout_gravity="center_horizontal" />
 
@@ -96,6 +121,8 @@
         android:hint="Retype password"
         android:visibility="gone"
         android:ems="10"
+        android:textColorHint="#ddd"
+        android:textColor="#fff"
         android:id="@+id/et_re_password"
         android:layout_gravity="center_horizontal" />
     <!--Ending edit text for register-->
@@ -140,3 +167,5 @@
         android:layout_gravity="right" />
     </LinearLayout>
 </LinearLayout>
+
+    </RelativeLayout>

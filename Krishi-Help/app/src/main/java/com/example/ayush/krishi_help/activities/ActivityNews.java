@@ -34,6 +34,7 @@ public class ActivityNews extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_main);
+        getSupportActionBar().setTitle("Krishi news");
         dialog= new ProgressDialog(ActivityNews.this);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.setMessage("Getting News");

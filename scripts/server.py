@@ -3,6 +3,7 @@ import MySQLdb
 import traceback
 import json
 import label_image
+import tagCheck
 #from werkzeug.datastructures import ImmutableMultiDict
 app = Flask(__name__)
 cursor = None
@@ -30,7 +31,7 @@ def login():
 	try :
 		cursor.execute(query)
 		password = cursor.fetchone()[0]
-		print password
+		# print password
 		db.commit()
 		if password == credentials_json['pass'] :	
 			return '{"status":"1"}'
@@ -114,9 +115,13 @@ def upload_file():
 	   try :
 	   	return_dict = dict()
 		f.save("/home/snorloks/cfd-app/models/testing/img.jpeg")
-		return_dict["data"] = label_image.main()
-		return_dict["status"] = 1
-		return jsonify(return_dict)
+		flag = tagCheck.main()
+		if flag :
+			return_dict["data"] = label_image.main()
+			return_dict["status"] = 1
+			return jsonify(return_dict)
+		else :
+			return jsonify({"status" :2})
 	   except :
 	   	print traceback.format_exc()
 		return jsonify({"status":0})

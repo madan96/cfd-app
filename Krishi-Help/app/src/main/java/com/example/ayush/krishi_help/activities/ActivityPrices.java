@@ -1,6 +1,7 @@
 package com.example.ayush.krishi_help.activities;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -34,7 +35,7 @@ public class ActivityPrices extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_prices_2);
+        setContentView(R.layout.activity_prices);
         pesticide = (Button) findViewById(R.id.b_p);
         fertilizer = (Button) findViewById(R.id.b_f);
         seed = (Button) findViewById(R.id.b_s);
@@ -42,19 +43,39 @@ public class ActivityPrices extends AppCompatActivity {
         dialog= new ProgressDialog(ActivityPrices.this);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.setMessage("Getting Price");
-//        dialog.show();
         lv = (ListView) findViewById(R.id.lvPrice);
+
+        pesticide.setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        pesticide.setTextColor(Color.WHITE);
+        dialog.show();
+        sendData("pesticide");
 
         pesticide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pesticide.setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+                pesticide.setTextColor(Color.WHITE);
+
+                fertilizer.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                fertilizer.setTextColor(Color.BLACK);
+                seed.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                seed.setTextColor(Color.BLACK);
+
                 dialog.show();
                 sendData("pesticide");
+
             }
         });
         fertilizer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                fertilizer.setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+                fertilizer.setTextColor(Color.WHITE);
+
+                pesticide.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                pesticide.setTextColor(Color.BLACK);
+                seed.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                seed.setTextColor(Color.BLACK);
                 dialog.show();
                 sendData("fertilizer");
             }
@@ -62,6 +83,13 @@ public class ActivityPrices extends AppCompatActivity {
         seed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                seed.setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+                seed.setTextColor(Color.WHITE);
+
+                fertilizer.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                fertilizer.setTextColor(Color.BLACK);
+                pesticide.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                pesticide.setTextColor(Color.BLACK);
                 dialog.show();
                 sendData("seed");
             }

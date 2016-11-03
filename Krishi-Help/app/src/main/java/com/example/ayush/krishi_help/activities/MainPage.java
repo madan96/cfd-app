@@ -15,12 +15,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ayush.krishi_help.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestHandle;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
@@ -35,16 +38,46 @@ import cz.msebera.android.httpclient.Header;
 public class MainPage extends AppCompatActivity {
     int SELECT_PHOTO = 12;
     ProgressDialog dialog_spinner;
+    RequestHandle client_reponse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         dialog_spinner= new ProgressDialog(MainPage.this);
         dialog_spinner.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog_spinner.setCanceledOnTouchOutside(false);
+        ImageView bFindDisease = (ImageView) findViewById(R.id.agricheck);
+        ImageView bPrices = (ImageView) findViewById(R.id.agrimart);
+        ImageView bNews = (ImageView) findViewById(R.id.agrinews);
 
-        Button bFindDisease = (Button) findViewById(R.id.b_find_disease);
-        Button bPrices = (Button) findViewById(R.id.b_prices);
-        Button bNews = (Button) findViewById(R.id.bNews);
+        TextView tvDisease = (TextView) findViewById(R.id.tvAgricheck);
+        TextView tvMart = (TextView) findViewById(R.id.tvAgrimart);
+        TextView tvNews = (TextView) findViewById(R.id.tvAgrinews);
+
+        tvDisease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_spinner.setMessage("Uploading image");
+                imagePicker();
+            }
+        });
+        tvMart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent prices_activity = new Intent("com.example.ayush.krishi_help.ActivityPrices");
+                startActivity(prices_activity);
+            }
+        });
+        tvNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent news_activity = new Intent("com.example.ayush.krishi_help.ActivityNews");
+                startActivity(news_activity);
+            }
+        });
+
+
+
         bFindDisease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,7 +189,7 @@ public class MainPage extends AppCompatActivity {
     private void sendFile(final File f) throws FileNotFoundException
     {
         dialog_spinner.show();
-        AsyncHttpClient client= new AsyncHttpClient();
+        final AsyncHttpClient client= new AsyncHttpClient();
 
                     RequestParams params = new RequestParams();
                     params.put("file",f);
@@ -179,10 +212,33 @@ public class MainPage extends AppCompatActivity {
                                     dialog_spinner.dismiss();
                                     Toast.makeText(MainPage.this, "Unknown error occured. Please try again !!!" , Toast.LENGTH_SHORT).show();
                                 }
+                                else if (response.getInt("status")==2)  //image does not have leaf
+                                {
+                                    dialog_spinner.dismiss();
+                                    Toast.makeText(MainPage.this, "Error !!! The image does not have any leaf." , Toast.LENGTH_SHORT).show();
+
+                                }
                                     Log.d("JSON", response.getString("status"));
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onRetry(int retryNo) {
+                            super.onRetry(retryNo);
+                            if (dialog_spinner.isShowing()) {
+                                Toast.makeText(MainPage.this, "Upload failed due to connection error. Trying again!!!", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                client_reponse.cancel(true);
+                            }
+                            if (retryNo == 2) {
+                                dialog_spinner.dismiss();
+                                Log.d("upload", "fail after three reply");
+                                Toast.makeText(MainPage.this, "Upload failed. Please try again later!!!" , Toast.LENGTH_SHORT).show();
+                                client_reponse.cancel(true);
                             }
                         }
 
@@ -195,7 +251,7 @@ public class MainPage extends AppCompatActivity {
                         }
                     };
 
-                    client.post(upload_url, params, responseHandler);
+        client_reponse =  client.post(upload_url, params, responseHandler);
     }
 
 

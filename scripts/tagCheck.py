@@ -131,12 +131,16 @@ def main():
         data8uint = np.fromstring(data, np.uint8)
         img = cv2.cvtColor(
             cv2.imdecode(data8uint, cv2.IMREAD_COLOR), cv2.COLOR_BGR2RGB)
-
-        flagc = renderResultOnImage(result, img)
+        try :
+            flagc = renderResultOnImage(result, img)
+        except :
+            flagc = 1
         if flagc == 1:
             print("Invalid Image! Try Again.")
+            return False 
         else:
             print("Checking Disease")
+            return True
             #ig, ax = plt.subplots(figsize=(15, 20))
             #ax.imshow(img)
 

@@ -27,15 +27,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.Register"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
-            <intent-filter>
-                <action android:name="com.example.ayush.krishi_help.register" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <!-- <activity android:name=".Image_upload"> -->
         <!-- <intent-filter> -->
         <!-- <action android:name="com.example.ayush.krishi_help.Image_upload" /> -->
@@ -46,16 +37,9 @@
         <!-- </activity> -->
         <activity
             android:name=".activities.MainPage"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="com.example.ayush.krishi_help.MainPage" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.Prices">
-            <intent-filter>
-                <action android:name="com.example.ayush.krishi_help.prices" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
