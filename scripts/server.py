@@ -111,7 +111,10 @@ def news() :
 def upload_file():
 	print "Got a file"
 	if request.method == 'POST':
-	   f = request.files['file']
+	   try :
+	   	f = request.files['file']
+	   except :
+	   	 return jsonify({"status":0})
 	   try :
 	   	return_dict = dict()
 		f.save("/home/snorloks/cfd-app/models/testing/img.jpeg")
