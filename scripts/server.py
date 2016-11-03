@@ -2,9 +2,9 @@ from flask import Flask, request, jsonify
 import MySQLdb
 import traceback
 import json
-# import label_image
-# import tagCheck
-#from werkzeug.datastructures import ImmutableMultiDict
+import label_image
+import tagCheck
+from werkzeug.datastructures import ImmutableMultiDict
 app = Flask(__name__)
 cursor = None
 db = None
