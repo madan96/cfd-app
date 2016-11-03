@@ -1,14 +1,20 @@
 package com.example.ayush.krishi_help.activities;
 
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.webkit.PermissionRequest;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,6 +39,10 @@ public class homepage extends AppCompatActivity {
     EditText f_name,l_name,password,re_password,contact_no,email_id;
     Button login,register ;  //creating button variables
     ProgressDialog dialog;
+
+    int PERMISSION_ALL = 1;
+    String[] PERMISSIONS = {Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
+
 //    VideoView vv;
     String url;
     @Override
@@ -138,6 +148,13 @@ public class homepage extends AppCompatActivity {
 //                startActivity(register_new_user);
             }
         });
+
+
+
+        if(!hasPermissions(this, PERMISSIONS)){
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
+        }
+
     }
 
 
@@ -264,4 +281,41 @@ public class homepage extends AppCompatActivity {
     }
 
 
-}
+
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+
+
+        if (requestCode == 1)
+        {
+            for(int i =0; i < grantResults.length; i++)
+            {
+                if (grantResults[i]!= PackageManager.PERMISSION_GRANTED)
+                {
+                    if (permissions[i].equals("Manifest.permission.INTERNET")) {
+                    Toast.makeText(homepage.this,"App needs Internet permission to work.",Toast.LENGTH_SHORT).show();}
+                    else if (permissions[i].equals(Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+                        Toast.makeText(homepage.this,"App needs Storage permission to work.",Toast.LENGTH_SHORT).show();}
+                    else if (permissions[i].equals(Manifest.permission.CAMERA)) {
+                        Toast.makeText(homepage.this,"App needs Camera permission to work.",Toast.LENGTH_SHORT).show();}
+                    finish();
+                }
+
+                }
+            }
+        }
+    }
+

@@ -44,7 +44,7 @@ public class DiseaseAdapter extends ArrayAdapter<JSONObject> {
 
         try {
             ((TextView) convertView.findViewById(R.id.tvNewsHeading)).setText(list.get(position).getString("disease"));
-            ((TextView) convertView.findViewById(R.id.tvNewsDesc)).setText(list.get(position).getString("score"));
+            ((TextView) convertView.findViewById(R.id.tvNewsDesc)).setText(list.get(position).getString("score") + "%");
 
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override

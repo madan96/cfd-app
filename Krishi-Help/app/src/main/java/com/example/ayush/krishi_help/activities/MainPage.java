@@ -57,7 +57,7 @@ public class MainPage extends AppCompatActivity {
         tvDisease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog_spinner.setMessage("Uploading image");
+                dialog_spinner.setMessage("Processing Image");
                 imagePicker();
             }
         });
@@ -81,7 +81,7 @@ public class MainPage extends AppCompatActivity {
         bFindDisease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog_spinner.setMessage("Uploading image");
+                dialog_spinner.setMessage("Processing Image");
                 imagePicker();
 
             }
@@ -210,12 +210,12 @@ public class MainPage extends AppCompatActivity {
                                 }
                                 else if (response.getInt("status")==0){
                                     dialog_spinner.dismiss();
-                                    Toast.makeText(MainPage.this, "Unknown error occured. Please try again !!!" , Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainPage.this, "Unknown error occured. Please try again !" , Toast.LENGTH_SHORT).show();
                                 }
                                 else if (response.getInt("status")==2)  //image does not have leaf
                                 {
                                     dialog_spinner.dismiss();
-                                    Toast.makeText(MainPage.this, "Error !!! The image does not have any leaf." , Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainPage.this, "Error! No leaf found in the given image." , Toast.LENGTH_LONG).show();
 
                                 }
                                     Log.d("JSON", response.getString("status"));
@@ -229,7 +229,7 @@ public class MainPage extends AppCompatActivity {
                         public void onRetry(int retryNo) {
                             super.onRetry(retryNo);
                             if (dialog_spinner.isShowing()) {
-                                Toast.makeText(MainPage.this, "Upload failed due to connection error. Trying again!!!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainPage.this, "Upload failed due to connection error. Trying again!", Toast.LENGTH_SHORT).show();
                             }
                             else {
                                 client_reponse.cancel(true);
@@ -237,7 +237,7 @@ public class MainPage extends AppCompatActivity {
                             if (retryNo == 2) {
                                 dialog_spinner.dismiss();
                                 Log.d("upload", "fail after three reply");
-                                Toast.makeText(MainPage.this, "Upload failed. Please try again later!!!" , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainPage.this, "Upload failed. Please try again later!" , Toast.LENGTH_SHORT).show();
                                 client_reponse.cancel(true);
                             }
                         }
@@ -247,7 +247,7 @@ public class MainPage extends AppCompatActivity {
                             super.onFailure(statusCode, headers, responseString, throwable);
                             dialog_spinner.dismiss();
                             Log.d("upload","fail");
-                            Toast.makeText(MainPage.this, "Upload failed. Please try again !!!" , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainPage.this, "Upload failed. Please try again !" , Toast.LENGTH_SHORT).show();
                         }
                     };
 

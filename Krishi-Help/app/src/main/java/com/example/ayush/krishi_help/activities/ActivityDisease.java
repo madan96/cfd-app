@@ -105,7 +105,12 @@ public class ActivityDisease extends AppCompatActivity {
         Collections.sort(list, comparator);
         JSONObject probableDisease = list.get(0);
         try {
-            likelyDisease.setText("The most probable disease is " + probableDisease.getString("disease"));
+            Log.d("HighDisease" ,probableDisease.getString("disease") );
+            if (probableDisease.getString("disease").contains("ealthy")){
+                likelyDisease.setText("Your leaf is "+probableDisease.getString("score") +"% likely healthy.");
+            }
+            else {
+            likelyDisease.setText("The most probable disease is " + probableDisease.getString("disease"));}
             lv.setAdapter(new DiseaseAdapter(ActivityDisease.this, list));
         } catch (JSONException e) {
             e.printStackTrace();
