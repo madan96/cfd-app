@@ -1,0 +1,53 @@
+ * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 222-936-050
+127.0.0.1 - - [03/Nov/2016 15:53:53] "POST /prices HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 15:53:54] "POST /prices HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 15:55:19] "POST /login HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 15:55:55] "POST /prices HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 15:56:55] "POST /uploader HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 15:58:36] "POST /login HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 15:58:42] "POST /news HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 15:59:56] "POST /uploader HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 16:00:27] "POST /prices HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 16:00:31] "POST /prices HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 16:05:18] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 16:08:18] "POST /login HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 16:08:39] "POST /uploader HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 16:08:41] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 16:15:39] "POST /login HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 16:16:48] "POST /news HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 16:17:11] "POST /uploader HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 16:17:13] "POST /login HTTP/1.0" 200 -
+127.0.0.1 - - [03/Nov/2016 16:17:20] "POST /prices HTTP/1.0" 200 -
+User requested fertilizer
+User requested seed
+User reqested pesticide
+Got a file
+Traceback (most recent call last):
+  File "server.py", line 118, in upload_file
+    flag = tagCheck.main()
+NameError: global name 'tagCheck' is not defined
+
+Got a file
+Traceback (most recent call last):
+  File "server.py", line 118, in upload_file
+    flag = tagCheck.main()
+NameError: global name 'tagCheck' is not defined
+
+User reqested pesticide
+User requested fertilizer
+Got a file
+Traceback (most recent call last):
+  File "server.py", line 118, in upload_file
+    flag = tagCheck.main()
+NameError: global name 'tagCheck' is not defined
+
+Got a file
+Traceback (most recent call last):
+  File "server.py", line 118, in upload_file
+    flag = tagCheck.main()
+NameError: global name 'tagCheck' is not defined
+
+User reqested pesticide
