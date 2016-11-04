@@ -1,0 +1,99 @@
+ * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 222-936-050
+ * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 222-936-050
+ * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 222-936-050
+127.0.0.1 - - [04/Nov/2016 06:17:15] "POST /login HTTP/1.0" 200 -
+W tensorflow/core/framework/op_def_util.cc:332] Op BatchNormWithGlobalNormalization is deprecated. It will cease to work in GraphDef version 9. Use tf.nn.batch_normalization().
+127.0.0.1 - - [04/Nov/2016 06:17:47] "POST /uploader HTTP/1.0" 200 -
+127.0.0.1 - - [04/Nov/2016 06:18:01] "POST /news HTTP/1.0" 200 -
+127.0.0.1 - - [04/Nov/2016 06:27:16] "POST /news HTTP/1.0" 200 -
+127.0.0.1 - - [04/Nov/2016 06:27:18] "POST /prices HTTP/1.0" 200 -
+127.0.0.1 - - [04/Nov/2016 06:27:19] "POST /prices HTTP/1.0" 200 -
+127.0.0.1 - - [04/Nov/2016 06:27:20] "POST /prices HTTP/1.0" 200 -
+127.0.0.1 - - [04/Nov/2016 06:27:33] "POST /uploader HTTP/1.0" 200 -
+127.0.0.1 - - [04/Nov/2016 06:37:38] "POST /login HTTP/1.0" 200 -
+127.0.0.1 - - [04/Nov/2016 06:38:05] "POST /uploader HTTP/1.0" 200 -
+Exception in thread Thread-1:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 801, in __bootstrap_inner
+    self.run()
+  File "/usr/lib/python2.7/threading.py", line 754, in run
+    self.__target(*self.__args, **self.__kwargs)
+  File "/home/snorloks/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 659, in inner
+    srv.serve_forever()
+  File "/home/snorloks/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 499, in serve_forever
+    HTTPServer.serve_forever(self)
+  File "/usr/lib/python2.7/SocketServer.py", line 233, in serve_forever
+    self._handle_request_noblock()
+  File "/usr/lib/python2.7/SocketServer.py", line 292, in _handle_request_noblock
+    self.handle_error(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 290, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 318, in process_request
+    self.finish_request(request, client_address)
+  File "/usr/lib/python2.7/SocketServer.py", line 331, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python2.7/SocketServer.py", line 652, in __init__
+    self.handle()
+  File "/home/snorloks/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 216, in handle
+    rv = BaseHTTPRequestHandler.handle(self)
+  File "/usr/lib/python2.7/BaseHTTPServer.py", line 340, in handle
+    self.handle_one_request()
+  File "/home/snorloks/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 251, in handle_one_request
+    return self.run_wsgi()
+  File "/home/snorloks/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 193, in run_wsgi
+    execute(self.server.app)
+  File "/home/snorloks/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 184, in execute
+    write(data)
+  File "/home/snorloks/.local/lib/python2.7/site-packages/werkzeug/serving.py", line 152, in write
+    self.send_header(key, value)
+  File "/usr/lib/python2.7/BaseHTTPServer.py", line 412, in send_header
+    self.wfile.write("%s: %s\r\n" % (keyword, value))
+IOError: [Errno 32] Broken pipe
+
+Got a file
+Checking Disease
+banana healthy (score = 95.21)
+banana speckle (score = 2.08)
+apple scab (score = 1.55)
+healthy apple (score = 0.85)
+apple black rot (score = 0.26)
+cedar apple rust (score = 0.05)
+User reqested pesticide
+User requested fertilizer
+User requested seed
+Got a file
+Checking Disease
+healthy apple (score = 68.50)
+apple scab (score = 12.82)
+apple black rot (score = 7.31)
+banana speckle (score = 5.46)
+banana healthy (score = 5.03)
+cedar apple rust (score = 0.88)
+Got a file
+Checking Disease
+apple black rot (score = 99.71)
+healthy apple (score = 0.25)
+cedar apple rust (score = 0.02)
+apple scab (score = 0.01)
+banana healthy (score = 0.00)
+banana speckle (score = 0.00)
+ * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 222-936-050
+ * Running on http://127.0.0.1:8000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger pin code: 222-936-050
+127.0.0.1 - - [04/Nov/2016 06:43:38] "GET / HTTP/1.0" 200 -
+127.0.0.1 - - [04/Nov/2016 06:43:38] "GET /favicon.ico HTTP/1.0" 404 -
+127.0.0.1 - - [04/Nov/2016 06:45:45] "POST /login HTTP/1.0" 200 -

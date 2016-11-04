@@ -111,7 +111,10 @@ def news() :
 def upload_file():
 	print "Got a file"
 	if request.method == 'POST':
-	   f = request.files['file']
+	   try :
+	   	f = request.files['file']
+	   except :
+	   	 return jsonify({"status":0})
 	   try :
 	   	return_dict = dict()
 		f.save("/home/snorloks/cfd-app/models/testing/img.jpeg")
@@ -132,10 +135,10 @@ def upload_file():
 
 if __name__ == '__main__':
 	try :
-		app.run(port=8000,debug=True)
+		app.run(port=8000,debug=True,threaded=True)
 	except Exception as e:
 		if e[0] == 48 :
 			print "Address already in use"
 		else :
-			app.run(port=8000,debug=True)
+			app.run(port=8000,debug=True,threaded=True)
 			print "Got the following error:\n{} ".format(traceback.format_exc())
