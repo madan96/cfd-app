@@ -135,10 +135,10 @@ def upload_file():
 
 if __name__ == '__main__':
 	try :
-		app.run(port=8000,debug=True)
+		app.run(port=8000,debug=True,threaded=True)
 	except Exception as e:
 		if e[0] == 48 :
 			print "Address already in use"
 		else :
-			app.run(port=8000,debug=True)
+			app.run(port=8000,debug=True,threaded=True)
 			print "Got the following error:\n{} ".format(traceback.format_exc())

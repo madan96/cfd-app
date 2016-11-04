@@ -79,7 +79,7 @@
     },
     {
         "link":"http://kisaankranti.com/pesticide/sv-vepon-larvicide.html",
-        "pricet":"Rs 239,900.00",
+        "pricet":"Rs 215,910.00",
         "productname":"SV VEPON Larvicide",
         "producttype":"pesticide"
     },
