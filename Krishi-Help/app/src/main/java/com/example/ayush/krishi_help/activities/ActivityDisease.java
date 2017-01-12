@@ -36,11 +36,13 @@ public class ActivityDisease extends AppCompatActivity {
     private JSONArray list;
     ProgressDialog dialog ;
     ImageView iv;
+    String server_ip ;
     TextView likelyDisease ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disease);
+        server_ip = getString(R.string.server_ip);
         likelyDisease = (TextView) findViewById(R.id.tvLikelyDisease);
         iv = (ImageView) findViewById(R.id.ivThumb);
         dialog= new ProgressDialog(ActivityDisease.this);

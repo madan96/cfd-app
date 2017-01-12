@@ -29,11 +29,12 @@ public class ActivityNews extends AppCompatActivity {
     ListView lv ;
     private JSONArray list;
     ProgressDialog dialog ;
-
+    String server_ip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_main);
+        server_ip = getString(R.string.server_ip);
         getSupportActionBar().setTitle("Krishi news");
         dialog= new ProgressDialog(ActivityNews.this);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -63,7 +64,7 @@ public class ActivityNews extends AppCompatActivity {
 
 
 
-    String url = "http://ubuntu-server1463.cloudapp.net/news";
+    String url = server_ip.concat("/news");
     public void sendData() {
         RequestParams params = new RequestParams();
         params.put("news", "news");

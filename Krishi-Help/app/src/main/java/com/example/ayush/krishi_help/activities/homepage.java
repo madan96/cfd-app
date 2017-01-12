@@ -39,7 +39,7 @@ public class homepage extends AppCompatActivity {
     EditText f_name,l_name,password,re_password,contact_no,email_id;
     Button login,register ;  //creating button variables
     ProgressDialog dialog;
-
+    String server_ip;
     int PERMISSION_ALL = 1;
     String[] PERMISSIONS = {Manifest.permission.INTERNET, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA};
 
@@ -49,6 +49,7 @@ public class homepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+        server_ip = getString(R.string.server_ip);
         email = (EditText) findViewById(R.id.et_login_email);
         pass = (EditText) findViewById(R.id.et_login_pass);
         f_name =(EditText) findViewById(R.id.et_f_name) ;
@@ -82,7 +83,8 @@ public class homepage extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                url = "http://ubuntu-server1463.cloudapp.net/login";
+                url = server_ip.concat("/login");
+                Log.d("check123", url);
                 f_name.setVisibility(View.GONE);
                 l_name.setVisibility(View.GONE);
                 password.setVisibility(View.GONE);
@@ -110,7 +112,7 @@ public class homepage extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                url = "http://ubuntu-server1463.cloudapp.net/register";
+                url = server_ip.concat("/register");
                 email.setVisibility(View.GONE);
                 pass.setVisibility(View.GONE);
                 if (f_name.getVisibility() == View.VISIBLE) {

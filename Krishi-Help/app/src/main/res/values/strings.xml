@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Krishi-Help</string>
+    <string name="server_ip">http://krishi5430.cloudapp.net</string>
 </resources>

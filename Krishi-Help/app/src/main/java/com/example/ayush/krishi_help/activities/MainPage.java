@@ -39,10 +39,14 @@ public class MainPage extends AppCompatActivity {
     int SELECT_PHOTO = 12;
     ProgressDialog dialog_spinner;
     RequestHandle client_reponse;
+    String server_ip ;
+    String upload_url ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
+        server_ip = getString(R.string.server_ip);
+        upload_url = server_ip.concat("/uploader");
         dialog_spinner= new ProgressDialog(MainPage.this);
         dialog_spinner.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog_spinner.setCanceledOnTouchOutside(false);
@@ -139,7 +143,7 @@ public class MainPage extends AppCompatActivity {
 
 
 
-    String upload_url = "http://ubuntu-server1463.cloudapp.net/uploader";
+
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
