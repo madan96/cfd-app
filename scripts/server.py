@@ -4,6 +4,7 @@ import traceback
 import json
 import label_image
 import tagCheck
+import os
 from werkzeug.datastructures import ImmutableMultiDict
 app = Flask(__name__)
 cursor = None
@@ -11,7 +12,7 @@ db = None
 def connect_database():
 	global cursor,db
 	# Open database connection
-	db = MySQLdb.connect("127.0.0.1", "root", "3TzZKV^p3ED{", "krishi")
+	db = MySQLdb.connect("127.0.0.1", "root", os.environ["MYSQL_PASS"], "krishi")
 	# prepare a cursor object using cursor() method
 	cursor = db.cursor()
 
