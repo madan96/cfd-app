@@ -8,9 +8,9 @@ import numpy as np
 # Import library to display results
 import matplotlib.pyplot as plt
 
-_url = 'https://api.projectoxford.ai/vision/v1/analyses'
+_url = 'https://api.projectoxford.ai/vision/v1.0'
 # Here you have to paste your primary key
-_key = '88b21e5987a0467790234a5b042b18cc'
+_key = '6d9c00fc83be42649e476783b5241e2e'
 _maxNumRetries = 10
 
 def processRequest(json, data, headers, params):
