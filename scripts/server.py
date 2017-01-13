@@ -118,7 +118,7 @@ def upload_file():
 	   	 return jsonify({"status":0})
 	   try :
 	   	return_dict = dict()
-		f.save("/home/snorloks/cfd-app/models/testing/img.jpeg")
+		f.save("/home/snorloks/uploadedImages/img.jpeg")
 		flag = tagCheck.main()
 		if flag :
 			return_dict["data"] = label_image.main()

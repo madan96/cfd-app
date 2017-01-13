@@ -4,6 +4,8 @@ import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -26,8 +28,9 @@ import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
 
 public class ActivityNews extends AppCompatActivity {
-
+    FloatingActionButton fab;
     ListView lv ;
+    Integer flag=0;
     private JSONArray list;
     ProgressDialog dialog ;
     String server_ip,url;
@@ -45,6 +48,24 @@ public class ActivityNews extends AppCompatActivity {
         dialog.show();
         lv = (ListView) findViewById(R.id.lv);
         sendData();
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setImageResource(R.drawable.notificationoff);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (flag == 0) {
+                    Snackbar.make(view, getString(R.string.newsOnNotification), Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null).show();
+                    fab.setImageResource(R.drawable.notificationon);
+                    flag = 1;
+                } else if (flag == 1) {
+                    Snackbar.make(view, getString(R.string.newsOffNotification), Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null).show();
+                    flag = 0;
+                    fab.setImageResource(R.drawable.notificationoff);
+                }
+            }
+        });
 
     }
 

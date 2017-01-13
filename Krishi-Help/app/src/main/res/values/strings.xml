@@ -9,4 +9,6 @@
     <string name="refreshlist">Refreshing Prices</string>
     <string name="priceOnNotification">You will now receive notification when prices will update</string>
     <string name="priceOffNotification">Notifications for prices not turned off</string>
+    <string name="newsOnNotification">You will now receive notification when prices will update</string>
+    <string name="newsOffNotification">Notifications for prices not turned off</string>
 </resources>
