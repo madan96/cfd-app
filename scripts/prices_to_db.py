@@ -16,6 +16,10 @@ def extract_products():
 		bd = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"}) 
 		req = urllib2.urlopen(bd)
 		data = BeautifulSoup(req.read(),"lxml")
+		image_area = data.find_all("div", {"class":"product-image-area"})
+		image_urls = list()
+		for i in range(0, len(image_area)):
+			image_urls.append(image_area[i].find_all("img")[0]['src'])
 		details_area = data.find_all("div",{"class":"details-area"})
 		products = [] 
 		prices = []
@@ -38,6 +42,7 @@ def extract_products():
 			obj['productname'] = str(product)
 			obj['pricet'] = "Rs " + prices[m]
 			obj['link'] = links[m]
+			obj['image_url'] = image_urls[m]
 			price.append(obj)
 			m+=1
 			k+=1
