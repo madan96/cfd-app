@@ -110,7 +110,7 @@ if result is not None:
 
 def main():
     # Load raw image file into memory
-    pathToFileInDisk = r"/home/snorloks/cfd-app/models/testing/img.jpeg"
+    pathToFileInDisk = r"/home/snorloks/uploadedImages/img.jpeg"
     with open(pathToFileInDisk, 'rb') as f:
         data = f.read()
 

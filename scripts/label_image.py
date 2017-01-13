@@ -1,7 +1,7 @@
 import tensorflow as tf, sys
 
 
-def main()
+def main() :
     # change this as you see fit
     image_path = "/home/snorloks/uploadedImages/img.jpeg"
 
