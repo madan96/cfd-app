@@ -18,12 +18,10 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="com.example.ayush.krishi_help.homepage" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -44,14 +42,18 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ActivityNews">
+        <activity
+            android:name=".activities.ActivityNews"
+            android:parentActivityName=".activities.MainPage">
             <intent-filter>
                 <action android:name="com.example.ayush.krishi_help.ActivityNews" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ActivityPrices">
+        <activity
+            android:name=".activities.ActivityPrices"
+            android:parentActivityName=".activities.MainPage">
             <intent-filter>
                 <action android:name="com.example.ayush.krishi_help.ActivityPrices" />
 
@@ -61,11 +63,19 @@
         <activity android:name=".activities.ActivityDisease">
             <intent-filter>
                 <action android:name="com.example.ayush.krishi_help.ActivityDisease" />
-
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.ActivityPricesTabbed"
+            android:label="@string/title_activity_activity_prices_tabbed"
+            android:parentActivityName=".activities.MainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="com.example.ayush.krishi_help.ActivityPricesTabbed" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
-
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.ayush.krishi_help.activities;
 
+import android.app.ActionBar;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,12 +30,14 @@ public class ActivityNews extends AppCompatActivity {
     ListView lv ;
     private JSONArray list;
     ProgressDialog dialog ;
-    String server_ip;
+    String server_ip,url;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_main);
         server_ip = getString(R.string.server_ip);
+        url = server_ip.concat("/news");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Krishi news");
         dialog= new ProgressDialog(ActivityNews.this);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -64,7 +67,7 @@ public class ActivityNews extends AppCompatActivity {
 
 
 
-    String url = server_ip.concat("/news");
+
     public void sendData() {
         RequestParams params = new RequestParams();
         params.put("news", "news");

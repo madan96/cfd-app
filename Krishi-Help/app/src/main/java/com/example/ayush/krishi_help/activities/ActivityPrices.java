@@ -29,7 +29,7 @@ import cz.msebera.android.httpclient.Header;
 public class ActivityPrices extends AppCompatActivity {
 
     ListView lv ;
-    String server_ip;
+    String server_ip,url;
     private JSONArray list;
     ProgressDialog dialog ;
     Button pesticide,fertilizer,seed;
@@ -37,7 +37,11 @@ public class ActivityPrices extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prices);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("AgriMart");
+
         server_ip = getString(R.string.server_ip);
+        url = server_ip.concat("/prices");
         pesticide = (Button) findViewById(R.id.b_p);
         fertilizer = (Button) findViewById(R.id.b_f);
         seed = (Button) findViewById(R.id.b_s);
@@ -118,7 +122,7 @@ public class ActivityPrices extends AppCompatActivity {
 
 
 
-    String url = server_ip.concat("/prices");
+
     public void sendData(final String req) {
         Log.d("Check", "Sending data opened");
         RequestParams params = new RequestParams();

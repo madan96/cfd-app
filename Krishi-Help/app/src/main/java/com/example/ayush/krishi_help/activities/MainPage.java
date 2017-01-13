@@ -68,7 +68,7 @@ public class MainPage extends AppCompatActivity {
         tvMart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent prices_activity = new Intent("com.example.ayush.krishi_help.ActivityPrices");
+                Intent prices_activity = new Intent("com.example.ayush.krishi_help.ActivityPricesTabbed");
                 startActivity(prices_activity);
             }
         });
@@ -94,7 +94,7 @@ public class MainPage extends AppCompatActivity {
         bPrices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent prices_activity = new Intent("com.example.ayush.krishi_help.ActivityPrices");
+                Intent prices_activity = new Intent("com.example.ayush.krishi_help.ActivityPricesTabbed");
                 startActivity(prices_activity);
             }
         });
