@@ -13,6 +13,10 @@ def extract_news():
 	data = BeautifulSoup(req.read(),"lxml")
 	news_list = data.find_all("div", {"class":"eachStory"})
 	news_data_list = data.find_all("p", {"class":""})
+	news_img = data.find_all("img")[2:]
+	news_imgurl = list()
+	for i in range(0,10):
+		news_imgurl.append("economictimes.indiatimes.com" + news_img[i]['src'])
 	news_data_list = news_data_list[3:]
 	pattern = re.compile('<p>(.*?)<\/p>', re.DOTALL)
 	
@@ -37,6 +41,7 @@ def extract_news():
 		obj['headline'] = str(tagline)
 		obj['news'] = str(news_data_list[i])
 		obj['link'] = str(links[i])
+		obj['img_url'] = news_imgurl[i]
 		new.append(obj)
 		i+=1
 
