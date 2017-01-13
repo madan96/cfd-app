@@ -8,7 +8,7 @@ import numpy as np
 # Import library to display results
 import matplotlib.pyplot as plt
 
-_url = 'https://api.projectoxford.ai/vision/v1.0'
+_url = 'https://api.projectoxford.ai/vision/v1.0/analyze'
 # Here you have to paste your primary key
 _key = '6d9c00fc83be42649e476783b5241e2e'
 _maxNumRetries = 10
