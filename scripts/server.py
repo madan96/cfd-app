@@ -54,7 +54,7 @@ def register():
 	details_json = request.form.to_dict()
 	if cursor == None :
 		connect_database()
-	query = "INSERT INTO users(Email,FirstName,LastName,contact_no,password) values ('%s','%s','%s','%s','%s') " % (details_json['email'] ,details_json['first_name'] , details_json['last_name'] , details_json['contact_no'],details_json['password'])
+	query = "INSERT INTO users(Email,FirstName,LastName,contact_no,password,user_type) values ('%s','%s','%s','%s','%s','%s') " % (details_json['email'] ,details_json['first_name'] , details_json['last_name'] , details_json['contact_no'],details_json['password'],details_json['user_type'])
 	try :
 		cursor.execute(query)
 		db.commit()
