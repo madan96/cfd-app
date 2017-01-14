@@ -14,8 +14,8 @@ Krishi-Help/gen/
 Krishi-Help/out/
 
 # Gradle files
-Krishi-Help/.gradle/
-Krishi-Help/build/
+./Krishi-Help/.gradle/
+./Krishi-Help/build/
 
 # Local configuration file (sdk path, etc)
 Krishi-Help/local.properties

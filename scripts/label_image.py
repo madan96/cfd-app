@@ -1,19 +1,19 @@
 import tensorflow as tf, sys
 
 
-def main() :
+def main(folder,img) :
     # change this as you see fit
-    image_path = "/home/snorloks/uploadedImages/img.jpeg"
+    image_path = "/home/snorloks/uploadedImages/{}".format(img)
 
     # Read in the image_data
     image_data = tf.gfile.FastGFile(image_path, 'rb').read()
 
     # Loads label file, strips off carriage return
     label_lines = [line.rstrip() for line 
-                       in tf.gfile.GFile("/home/snorloks/models/first_layer/retrained_labels.txt")]
+                       in tf.gfile.GFile("/home/snorloks/models/{}/retrained_labels.txt".format(folder))
 
     # Unpersists graph from file
-    with tf.gfile.FastGFile("/home/snorloks/models/first_layer/retrained_graph.pb", 'rb') as f:
+    with tf.gfile.FastGFile("/home/snorloks/models/{}/retrained_graph.pb".format(folder), 'rb') as f:
         graph_def = tf.GraphDef()
         graph_def.ParseFromString(f.read())
         _ = tf.import_graph_def(graph_def, name='')

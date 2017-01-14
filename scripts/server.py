@@ -108,7 +108,7 @@ def news() :
 	news_data = json.load(open('newsdata.txt' , 'r'))
 	return jsonify({"data":news_data})
 
-@app.route('/uploader', methods = ['GET', 'POST'])
+@app.route('/crop_check', methods = ['GET', 'POST'])
 def upload_file():
 	print "Got a file"
 	if request.method == 'POST':
@@ -118,11 +118,11 @@ def upload_file():
 	   	 return jsonify({"status":0})
 	   try :
 	   	return_dict = dict()
-		f.save("/home/snorloks/uploadedImages/img.jpeg")
+		f.save("/home/snorloks/uploadedImages/crop_img.jpeg")
 		#flag = tagCheck.main()
 		flag=1
 		if flag :
-			return_dict["data"] = label_image.main()
+			return_dict["data"] = label_image.main("first_layer","crop_img.jpeg")
 			return_dict["status"] = 1
 			return jsonify(return_dict)
 		else :
@@ -131,7 +131,29 @@ def upload_file():
 	   	print traceback.format_exc()
 		return jsonify({"status":0})
 
-	   
+@app.route('/disease_check', methods = ['GET', 'POST'])
+def get_disease(crop_name) :
+	print "Finding disease for {}".format(crop_name)
+	if request.method == 'POST':
+	   try :
+	   	f = request.files['file']
+	   except :
+	   	 return jsonify({"status":0})
+	   try :
+	   	return_dict = dict()
+		f.save("/home/snorloks/uploadedImages/disease_img.jpeg")
+		#flag = tagCheck.main()
+		flag=1
+		if flag :
+			return_dict["data"] = label_image.main("","disease_img.jpeg")
+			return_dict["status"] = 1
+			return jsonify(return_dict)
+		else :
+			return jsonify({"status" :2})
+	   except :
+	   	print traceback.format_exc()
+		return jsonify({"status":0})	
+
 
 
 
