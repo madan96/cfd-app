@@ -504,9 +504,20 @@ public class MainPage extends AppCompatActivity {
                         startActivity(disease);
                         Log.d("MainPage", response.toString());
                     }
+
+                    else if(response.getInt("status")==5){
+                        dialog_spinner.dismiss();
+                        Bundle b = new Bundle() ;
+                        b.putString("path" , f.getAbsolutePath());
+                        b.putString("data" , response.getString("data"));
+                        Intent cropcheck = new Intent("com.example.ayush.krishi_help.Activitycropcheck");
+                        cropcheck.putExtras(b);
+                        startActivity(cropcheck);
+                        Log.d("MainPage", response.toString());
+                    }
                     else if (response.getInt("status")==0){
                         dialog_spinner.dismiss();
-                        Toast.makeText(MainPage.this, "Unknown error occured. Please try again !" , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainPage.this, "Unknown error occured. Please try again !", Toast.LENGTH_SHORT).show();
                     }
                     else if (response.getInt("status")==2)  //image does not have leaf
                     {

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ayush.krishi_help.R;
@@ -40,7 +41,7 @@ public class priceAdapter extends ArrayAdapter<JSONObject> {
         {
             LayoutInflater vi;
             vi = LayoutInflater.from(getContext());
-            convertView = vi.inflate(R.layout.listitem_news, null);
+            convertView = vi.inflate(R.layout.listitem_price, null);
         }
 
 
@@ -49,8 +50,7 @@ public class priceAdapter extends ArrayAdapter<JSONObject> {
         try {
             ((TextView) convertView.findViewById(R.id.tvNewsHeading)).setText(list.get(position).getString("productname"));
             ((TextView) convertView.findViewById(R.id.tvNewsDesc)).setText(list.get(position).getString("pricet"));
-
-            convertView.setOnClickListener(new View.OnClickListener() {
+            ((Button) convertView.findViewById(R.id.btn_buy_now_prices)).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(Intent.ACTION_VIEW);
@@ -62,6 +62,18 @@ public class priceAdapter extends ArrayAdapter<JSONObject> {
                     context.startActivity(i);
                 }
             });
+//            convertView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent i = new Intent(Intent.ACTION_VIEW);
+//                    try {
+//                        i.setData(Uri.parse(list.get(position).getString("link")));
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                    context.startActivity(i);
+//                }
+//            });
         }catch (Exception e)
         {
             e.printStackTrace();

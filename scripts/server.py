@@ -116,8 +116,10 @@ def news() :
 def get_crop(flag=0):
 	print "Got a file"
 	if flag :
-		result = label_image.main("first_layer","disease_img.jpg")
-		return result[0]["disease"]
+		tag_flag = tagCheck.main(disease_img.jpg)
+		if tag_flag :
+			result = label_image.main("first_layer_new","disease_img.jpg")
+			return result[0]["disease"]
 	if request.method == 'POST':
 	   try :
 	   	f = request.files['file']
@@ -126,11 +128,11 @@ def get_crop(flag=0):
 	   try :
 	   	return_dict = dict()
 		f.save("/home/snorloks/uploadedImages/crop_img.jpg")
-		#flag = tagCheck.main()
-		flag=1
-		if flag :
-			return_dict["data"] = label_image.main("first_layer","crop_img.jpg")
-			return_dict["status"] = 1
+		tag_flag = tagCheck.main("crop_img.jpg")
+		# flag=1
+		if tag_flag :
+			return_dict["data"] = label_image.main("first_layer_new","crop_img.jpg")[0]
+			return_dict["status"] = 5
 			return jsonify(return_dict)
 		else :
 			return jsonify({"status" :2})
@@ -150,8 +152,8 @@ def get_disease() :
 	   try :
 	   	return_dict = dict()
 		f.save("/home/snorloks/uploadedImages/disease_img.jpg")
-		#flag = tagCheck.main()
-		flag=1
+		flag = tagCheck.main("disease_img.jpg")
+		# flag=1
 		if flag :
 			crop_name = get_crop(1)
 			print ("The crop is {}".format(crop_name))

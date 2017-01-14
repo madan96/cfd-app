@@ -1,17 +1,26 @@
 <resources>
     <string name="app_name">Krishi-Help</string>
     <string name="server_ip">http://krishi5430.cloudapp.net</string>
-    <string name="title_activity_activity_prices_tabbed">ActivityPricesTabbed</string>
+
     <string name="action_settings">Settings</string>
+
+    <string name="refreshlist">Refreshing Prices</string>
+
+    <!--Activity Crop Check-->
+    <string name="probable_crop_name">The above image is most probably of&#160;</string>
+    <!--Activity News-->
+    <string name="news_click_notification">Tap on list to read more !</string>
+    <string name="newsOnNotification">You will now receive notification when prices will update</string>
+    <string name="newsOffNotification">Notifications for prices not turned off</string>
+
+    <!--Activity Prices-->
+    <string name="title_activity_activity_prices_tabbed">AgriMart</string>
     <string name="pricePesticide">Getting list of Pesticides</string>
     <string name="priceFertiliser">Getting list of Fertilisers</string>
     <string name="priceSeed">Getting list of Seeds</string>
-    <string name="refreshlist">Refreshing Prices</string>
+    <string name="price_buynow_btn">Buy Now</string>
     <string name="priceOnNotification">You will now receive notification when prices will update</string>
     <string name="priceOffNotification">Notifications for prices not turned off</string>
-    <string name="newsOnNotification">You will now receive notification when prices will update</string>
-    <string name="newsOffNotification">Notifications for prices not turned off</string>
-    
     <!--Helpline Activity -->
     <string name="helpline_activity_title">Helpline</string>
 

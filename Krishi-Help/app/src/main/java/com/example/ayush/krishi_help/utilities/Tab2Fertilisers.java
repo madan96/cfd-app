@@ -4,7 +4,7 @@ package com.example.ayush.krishi_help.utilities;
  * Created by ayush on 13/01/17.
  */
 
-import android.app.ProgressDialog;
+//import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import cz.msebera.android.httpclient.Header;
 
 public class Tab2Fertilisers extends Fragment {
-    ProgressDialog dialog;
+//    ProgressDialog dialog;
     String server_ip, url;
     ListView lv;
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -42,14 +42,14 @@ public class Tab2Fertilisers extends Fragment {
         url = server_ip.concat("/prices");
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.activity_price_swipe_refresh_layout);
         lv = (ListView) rootView.findViewById(R.id.lvPrice);
-        dialog = new ProgressDialog(getActivity());
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setMessage(getString(R.string.priceFertiliser));
-        dialog.show();
-
-        dialog= new ProgressDialog(getActivity());
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setMessage(getString(R.string.priceFertiliser));
+//        dialog = new ProgressDialog(getActivity());
+//        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        dialog.setMessage(getString(R.string.priceFertiliser));
+//        dialog.show();
+//
+//        dialog= new ProgressDialog(getActivity());
+//        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        dialog.setMessage(getString(R.string.priceFertiliser));
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -102,7 +102,7 @@ public class Tab2Fertilisers extends Fragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                dialog.dismiss();
+//                dialog.dismiss();
 //                Log.d("Result", response.toString());
 //                try {
 //                    Log.d("Response", response.getString("1"));
@@ -114,7 +114,7 @@ public class Tab2Fertilisers extends Fragment {
                     try {
                         arr = response.getJSONArray("data");
                         setList(arr);
-                        dialog.dismiss();
+//                        dialog.dismiss();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -123,7 +123,7 @@ public class Tab2Fertilisers extends Fragment {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                dialog.dismiss();
+//                dialog.dismiss();
                 Toast.makeText(getActivity(), "Unable to retrieve data. Please try again", Toast.LENGTH_SHORT).show();
             }
         };

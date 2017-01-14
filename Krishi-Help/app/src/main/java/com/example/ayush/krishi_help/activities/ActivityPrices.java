@@ -31,7 +31,7 @@ public class ActivityPrices extends AppCompatActivity {
     ListView lv ;
     String server_ip,url;
     private JSONArray list;
-    ProgressDialog dialog ;
+//    ProgressDialog dialog ;
     Button pesticide,fertilizer,seed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +46,14 @@ public class ActivityPrices extends AppCompatActivity {
         fertilizer = (Button) findViewById(R.id.b_f);
         seed = (Button) findViewById(R.id.b_s);
 
-        dialog= new ProgressDialog(ActivityPrices.this);
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.setMessage("Getting Price");
+//        dialog= new ProgressDialog(ActivityPrices.this);
+//        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        dialog.setMessage("Getting Price");
         lv = (ListView) findViewById(R.id.lvPrice);
 
         pesticide.setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
         pesticide.setTextColor(Color.WHITE);
-        dialog.show();
+//        dialog.show();
         sendData("pesticide");
 
         pesticide.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +67,7 @@ public class ActivityPrices extends AppCompatActivity {
                 seed.setBackgroundColor(getResources().getColor(android.R.color.transparent));
                 seed.setTextColor(Color.BLACK);
 
-                dialog.show();
+//                dialog.show();
                 sendData("pesticide");
 
             }
@@ -82,7 +82,7 @@ public class ActivityPrices extends AppCompatActivity {
                 pesticide.setTextColor(Color.BLACK);
                 seed.setBackgroundColor(getResources().getColor(android.R.color.transparent));
                 seed.setTextColor(Color.BLACK);
-                dialog.show();
+//                dialog.show();
                 sendData("fertilizer");
             }
         });
@@ -96,7 +96,7 @@ public class ActivityPrices extends AppCompatActivity {
                 fertilizer.setTextColor(Color.BLACK);
                 pesticide.setBackgroundColor(getResources().getColor(android.R.color.transparent));
                 pesticide.setTextColor(Color.BLACK);
-                dialog.show();
+//                dialog.show();
                 sendData("seed");
             }
         });
@@ -151,7 +151,7 @@ public class ActivityPrices extends AppCompatActivity {
                     try {
                         arr = response.getJSONArray("data");
                         setList(arr);
-                        dialog.dismiss();
+//                        dialog.dismiss();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -161,7 +161,7 @@ public class ActivityPrices extends AppCompatActivity {
                     try {
                         arr = response.getJSONArray("data");
                         setList(arr);
-                        dialog.dismiss();
+//                        dialog.dismiss();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -171,7 +171,7 @@ public class ActivityPrices extends AppCompatActivity {
                     try {
                         arr = response.getJSONArray("data");
                         setList(arr);
-                        dialog.dismiss();
+//                        dialog.dismiss();
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -182,7 +182,7 @@ public class ActivityPrices extends AppCompatActivity {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                dialog.dismiss();
+//                dialog.dismiss();
                 Toast.makeText(ActivityPrices.this, "Unable to retrieve data. Please try again", Toast.LENGTH_SHORT).show();
             }
         };

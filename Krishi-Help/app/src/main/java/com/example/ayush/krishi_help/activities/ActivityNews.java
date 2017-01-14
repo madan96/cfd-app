@@ -50,6 +50,7 @@ public class ActivityNews extends AppCompatActivity {
         sendData();
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setImageResource(R.drawable.notificationoff);
+        Toast.makeText(ActivityNews.this,getString(R.string.news_click_notification), Toast.LENGTH_SHORT).show();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

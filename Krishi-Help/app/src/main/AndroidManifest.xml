@@ -90,7 +90,7 @@
             android:parentActivityName=".activities.MainPage"
             >
             <intent-filter>
-                <action android:name="com.example.ayush.krishi_help.ActivityPricesTabbed" />
+                <action android:name="com.example.ayush.krishi_help.ActiveHelpline" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -105,6 +105,14 @@
         <activity android:name=".activities.ActivityRegister"
             android:parentActivityName=".activities.homepage">
 
+        </activity>
+        <!--CropCheck Activity-->
+        <activity android:name=".activities.Activitycropcheck"
+            android:parentActivityName=".activities.MainPage">
+            <intent-filter>
+                <action android:name="com.example.ayush.krishi_help.Activitycropcheck" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

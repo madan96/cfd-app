@@ -108,9 +108,10 @@ if result is not None:
 # Via Disk
 
 
-def main():
+def main(image_name):
     # Load raw image file into memory
-    pathToFileInDisk = r"/home/snorloks/uploadedImages/img.jpeg"
+
+    pathToFileInDisk = "/home/snorloks/uploadedImages/{}".format(image_name)
     with open(pathToFileInDisk, 'rb') as f:
         data = f.read()
 
