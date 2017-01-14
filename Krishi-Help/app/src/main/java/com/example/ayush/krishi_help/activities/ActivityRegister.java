@@ -2,13 +2,17 @@ package com.example.ayush.krishi_help.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ayush.krishi_help.R;
@@ -27,14 +31,19 @@ import cz.msebera.android.httpclient.Header;
  */
 public class ActivityRegister extends AppCompatActivity {
     EditText f_name,l_name,password,re_password,contact_no,email_id;
-    String server_ip,url ;
+    TextView tvOn,tvOff;
+    String server_ip,url,user_type ;
     ProgressDialog dialog;
     Button register;
+    Switch type;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         server_ip = getString(R.string.server_ip);
+
+        tvOn = (TextView) findViewById(R.id.textViewSwitchOn);
+        tvOff = (TextView) findViewById(R.id.textViewSwitchOff);
 
         f_name =(EditText) findViewById(R.id.et_f_name) ;
         l_name = (EditText) findViewById(R.id.et_l_name) ;
@@ -43,10 +52,39 @@ public class ActivityRegister extends AppCompatActivity {
         re_password = (EditText) findViewById(R.id.et_re_password) ;
         contact_no = (EditText) findViewById(R.id.et_contact_no) ;
         register = (Button) findViewById(R.id.btn_signup) ;
-
+        type = (Switch) findViewById(R.id.register_type);
         dialog= new ProgressDialog(ActivityRegister.this);
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 
+
+        if(type.isChecked()){
+            user_type = "buyer";
+            tvOn.setTypeface(null, Typeface.BOLD);
+            tvOff.setTypeface(null,Typeface.NORMAL);
+
+//                    switchStatus.setText("Switch is currently ON");
+        }else{
+            user_type = "farmer";
+            tvOff.setTypeface(null,Typeface.BOLD);
+            tvOn.setTypeface(null,Typeface.NORMAL);
+//                    switchStatus.setText("Switch is currently OFF");
+        }
+        type.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    user_type = "buyer";
+                    tvOn.setTypeface(null, Typeface.BOLD);
+                    tvOff.setTypeface(null,Typeface.NORMAL);
+//                    switchStatus.setText("Switch is currently ON");
+                }else{
+                    user_type = "farmer";
+                    tvOff.setTypeface(null, Typeface.BOLD);
+                    tvOn.setTypeface(null,Typeface.NORMAL);
+//                    switchStatus.setText("Switch is currently OFF");
+                }
+            }
+        });
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +106,7 @@ public class ActivityRegister extends AppCompatActivity {
                     } else {
                         dialog.setMessage(getString(R.string.activity_register_register_dialog));
                         dialog.show();
-                        sendData(0);
+                        sendData();
                     }
                 
 //                Intent register_new_user = new Intent("com.example.ayush.krishi_help.register");
@@ -78,7 +116,7 @@ public class ActivityRegister extends AppCompatActivity {
 
     }
 
-    public void sendData(Integer flag) {
+    public void sendData() {
         Log.d("Check", "Sending data opened");
         RequestParams params = new RequestParams();
 
@@ -87,6 +125,7 @@ public class ActivityRegister extends AppCompatActivity {
             params.put("contact_no", contact_no.getText().toString());
             params.put("password", password.getText().toString());
             params.put("email",email_id.getText().toString());
+            params.put("user_type",user_type);
 
 //        params.setUseJsonStreamer(true);
 

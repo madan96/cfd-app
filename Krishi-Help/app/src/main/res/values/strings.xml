@@ -43,4 +43,9 @@
     <string name="activity_register_success_register_1">Hi !</string>
     <string name="activity_register_success_register_2">. You are already registered. Please log in to continue.</string>
     <string name="activity_register_error">"Please try again later"</string>
+
+    <string name="activity_register_switch_off">Farmer</string>
+    <string name="activity_register_switch_on">Buyer</string>
+    <!--<string name="activity_register_"></string>-->
+    <!--<string name="activity_register_"></string>-->
 </resources>
