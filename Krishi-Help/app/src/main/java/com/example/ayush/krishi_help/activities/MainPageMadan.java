@@ -64,12 +64,13 @@ public class MainPageMadan extends AppCompatActivity {
 
 
         img = (ImageView) findViewById(R.id.imgView); //Centre image
-        about = (ImageView) findViewById(R.id.random);
-        news = (ImageView) findViewById(R.id.abtDev);
-        helpline = (ImageView) findViewById(R.id.helpline);
-        BuynSell = (ImageView) findViewById(R.id.buynsell);
+        helpline = (ImageView) findViewById(R.id.abtDev);
+        agriNews = (ImageView) findViewById(R.id.random);
         agriMart = (ImageView) findViewById(R.id.agriMart);
-        agriNews = (ImageView) findViewById(R.id.agriNews);
+//        about = (ImageView) findViewById(R.id.helpline);
+        BuynSell = (ImageView) findViewById(R.id.buynsell);
+//        news = (ImageView) findViewById(R.id.agriMart);
+//        agriNews = (ImageView) findViewById(R.id.agriNews);
         cropcheck = (ImageView) findViewById(R.id.cropCheck);
         diseaseCheck = (ImageView) findViewById(R.id.diseaseCheck);
         tv= (TextView)findViewById(R.id.tv);
@@ -81,20 +82,20 @@ public class MainPageMadan extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        about.setVisibility(View.VISIBLE);
+                        cropcheck.setVisibility(View.VISIBLE);
                     }
                 }, 100);
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        BuynSell.setVisibility(View.VISIBLE);
+                        diseaseCheck.setVisibility(View.VISIBLE);
                     }
                 }, 200);
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
 
-                        cropcheck.setVisibility(View.VISIBLE);
+                        agriMart.setVisibility(View.VISIBLE);
 
                     }
                 }, 300);
@@ -103,34 +104,34 @@ public class MainPageMadan extends AppCompatActivity {
                     public void run() {
 
 
-                        diseaseCheck.setVisibility(View.VISIBLE);
+//                        diseaseCheck.setVisibility(View.VISIBLE);
 
                     }
                 }, 400);
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        agriMart.setVisibility(View.VISIBLE);
+                        helpline.setVisibility(View.VISIBLE);
                     }
                 }, 500);
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        agriNews.setVisibility(View.VISIBLE);
+//                        agriNews.setVisibility(View.VISIBLE);
                     }
                 }, 600);
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
 
-                        news.setVisibility(View.VISIBLE);
+                        agriNews.setVisibility(View.VISIBLE);
 
                     }
                 }, 700);
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        helpline.setVisibility(View.VISIBLE);
+                        BuynSell.setVisibility(View.VISIBLE);
 
                     }
                 }, 800);
@@ -155,42 +156,42 @@ public class MainPageMadan extends AppCompatActivity {
                 startActivity(fIntent);
             }
         });
-        about.setOnClickListener(new View.OnClickListener() {
-            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-            @Override
-            public void onClick(View v) {
-                about.setAlpha(0.2f);
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        about.setAlpha(1f);
-                    }
-                }, 25);
+//        about.setOnClickListener(new View.OnClickListener() {
+//            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+//            @Override
+//            public void onClick(View v) {
+//                about.setAlpha(0.2f);
+//                Handler handler = new Handler();
+//                handler.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        about.setAlpha(1f);
+//                    }
+//                }, 25);
+//
+//
+//                Intent fIntent = new Intent(MainPageMadan.this, ActivityNews.class);
+//                startActivity(fIntent);
+//            }
+//        });
 
-
-                Intent fIntent = new Intent(MainPageMadan.this, ActivityNews.class);
-                startActivity(fIntent);
-            }
-        });
-
-        news.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                news.setAlpha(0.2f);
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        news.setAlpha(1f);
-                    }
-                }, 25);
-
-
-                Intent fIntent = new Intent(MainPageMadan.this, ActivityNews.class);
-                startActivity(fIntent);
-            }
-        });
+//        news.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                news.setAlpha(0.2f);
+//                Handler handler = new Handler();
+//                handler.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        news.setAlpha(1f);
+//                    }
+//                }, 25);
+//
+//
+//                Intent fIntent = new Intent(MainPageMadan.this, ActivityNews.class);
+//                startActivity(fIntent);
+//            }
+//        });
 
         BuynSell.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -329,7 +330,7 @@ public class MainPageMadan extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                news.setVisibility(View.INVISIBLE);
+                BuynSell.setVisibility(View.INVISIBLE);
             }
         }, 100);
         handler.postDelayed(new Runnable() {
@@ -342,43 +343,40 @@ public class MainPageMadan extends AppCompatActivity {
             @Override
             public void run() {
 
-                agriMart.setVisibility(View.INVISIBLE);
+//                helpline.setVisibility(View.INVISIBLE);
 
             }
         }, 300);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
-
-                diseaseCheck.setVisibility(View.INVISIBLE);
-
+                helpline.setVisibility(View.INVISIBLE);
             }
         }, 400);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                cropcheck.setVisibility(View.INVISIBLE);
+//                agriMart.setVisibility(View.INVISIBLE);
             }
         }, 500);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                BuynSell.setVisibility(View.INVISIBLE);
+                agriMart.setVisibility(View.INVISIBLE);
             }
         }, 600);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                about.setVisibility(View.INVISIBLE);
+                diseaseCheck.setVisibility(View.INVISIBLE);
 
             }
         }, 700);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                tv.setVisibility(View.VISIBLE);
+                cropcheck.setVisibility(View.INVISIBLE);
 
             }
         }, 800);
