@@ -153,7 +153,7 @@ public class ActivityRegister extends AppCompatActivity {
                     else if (response.getString("status").equals("ok")) {
                         dialog.dismiss();
                         Toast.makeText(ActivityRegister.this,getString(R.string.activity_register_success_register_1)+f_name.getText().toString()+getString(R.string.activity_register_success_register_2), Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(ActivityRegister.this, MainPageMadan.class));
+                        startActivity(new Intent(ActivityRegister.this, MainPage.class));
 
                     }
                     Log.d("JSON", response.getString("status"));

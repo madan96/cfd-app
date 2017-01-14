@@ -37,15 +37,6 @@
         <!-- </intent-filter> -->
         <!-- </activity> -->
         <activity
-            android:name=".activities.MainPage"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="com.example.ayush.krishi_help.MainPage" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".activities.ActivityNews"
             android:parentActivityName=".activities.MainPage">
             <intent-filter>
@@ -80,7 +71,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainPageMadan"
+            android:name=".activities.MainPage"
             android:label="activity_madan_miain"
             android:parentActivityName=".activities.MainPage"
             android:theme="@style/AppTheme.NoActionBar">

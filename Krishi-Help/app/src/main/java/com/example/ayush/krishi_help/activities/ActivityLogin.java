@@ -92,7 +92,7 @@ public class ActivityLogin extends AppCompatActivity {
                     if (login_status.equals("1")) {
                         dialog.dismiss();
                         Log.d("Login", "Success");
-                        startActivity(new Intent(ActivityLogin.this, MainPageMadan.class));
+                        startActivity(new Intent(ActivityLogin.this, MainPage.class));
                         Toast.makeText(ActivityLogin.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
 
                     } else if (login_status.equals("noemail")) {
