@@ -40,21 +40,24 @@ public class MainPage extends AppCompatActivity {
     ProgressDialog dialog_spinner;
     RequestHandle client_reponse;
     String server_ip ;
-    String upload_url ;
+    String upload_url,crop_upload_url,disease_upload_url ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
         server_ip = getString(R.string.server_ip);
-        upload_url = server_ip.concat("/uploader");
+        crop_upload_url = server_ip.concat("/crop_check");
+        disease_upload_url = server_ip.concat("/disease_check");
         dialog_spinner= new ProgressDialog(MainPage.this);
         dialog_spinner.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog_spinner.setCanceledOnTouchOutside(false);
-        ImageView bFindDisease = (ImageView) findViewById(R.id.agricheck);
+        ImageView bFindDisease = (ImageView) findViewById(R.id.agriDiseaseCheck);
+        ImageView bFindCrop = (ImageView) findViewById(R.id.agriCropCheck);
         ImageView bPrices = (ImageView) findViewById(R.id.agrimart);
         ImageView bNews = (ImageView) findViewById(R.id.agrinews);
 
-        TextView tvDisease = (TextView) findViewById(R.id.tvAgricheck);
+        TextView tvDisease = (TextView) findViewById(R.id.tvAgriCropCheck);
+        TextView tvCrop = (TextView) findViewById(R.id.tvAgriDiseaseCheck);
         TextView tvMart = (TextView) findViewById(R.id.tvAgrimart);
         TextView tvNews = (TextView) findViewById(R.id.tvAgrinews);
 
@@ -62,9 +65,20 @@ public class MainPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog_spinner.setMessage("Processing Image");
+                upload_url = disease_upload_url;
                 imagePicker();
             }
         });
+
+        tvCrop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_spinner.setMessage("Processing Image");
+                upload_url = crop_upload_url;
+                imagePicker();
+            }
+        });
+
         tvMart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,10 +100,22 @@ public class MainPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog_spinner.setMessage("Processing Image");
+                upload_url=disease_upload_url;
                 imagePicker();
 
             }
         });
+
+        bFindCrop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_spinner.setMessage("Processing Image");
+                upload_url = crop_upload_url;
+                imagePicker();
+
+            }
+        });
+
 
         bPrices.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -11,4 +11,36 @@
     <string name="priceOffNotification">Notifications for prices not turned off</string>
     <string name="newsOnNotification">You will now receive notification when prices will update</string>
     <string name="newsOffNotification">Notifications for prices not turned off</string>
+    
+    <!--Helpline Activity -->
+    <string name="helpline_activity_title">Helpline</string>
+
+    <!--MainPage Activity-->
+    <string name="mainpage_internet_offline_crop">Sorry! You Need Internet Connection To Check Crop</string>
+    <string name="mainpage_internet_offline_disease">Sorry! You Need Internet Connection To Check Disease</string>
+    <string name="mainpage_image_process_crop">Processing Leaf Image</string>
+    <string name="mainpage_image_process_disease">Processing Leaf Image</string>
+
+    <!--Activity Login-->
+    <string name="activity_login_noemail">Please enter the email id</string>
+    <string name="activity_login_nopass">Please enter the password</string>
+    <string name="activity_login_login_dialog">Logging In</string>
+    <string name="activity_login_wrongemail">Wrong E-mail entered</string>
+    <string name="activity_login_wrongpass">Wrong password entered</string>
+    <string name="activity_login_senddatafail">Please try again later</string>
+
+    <!--Actvity Register-->
+    <string name="activity_register_no_firstname">You forgot to enter your first name</string>
+    <string name="activity_register_no_lastname">You forgot to enter your last name</string>
+    <string name="activity_register_no_emailid">You forgot to enter your email id</string>
+    <string name="activity_register_no_contactno">You forgot to enter your contact number</string>
+    <string name="activity_register_no_password">You forgot to enter the password</string>
+    <string name="activity_register_no_repassword">You forgot to re-enter the password</string>
+    <string name="activity_register_passwords_not_match">Sorry! Passwords did not match</string>
+    <string name="activity_register_register_dialog">"Signing you up\n  Please Wait... "</string>
+    <string name="activity_register_duplicateuser_1">Hi !</string>
+    <string name="activity_register_duplicateuser_2">. You are already registered. Please log in to continue.</string>
+    <string name="activity_register_success_register_1">Hi !</string>
+    <string name="activity_register_success_register_2">. You are already registered. Please log in to continue.</string>
+    <string name="activity_register_error">"Please try again later"</string>
 </resources>

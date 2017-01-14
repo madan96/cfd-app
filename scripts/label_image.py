@@ -1,19 +1,24 @@
 import tensorflow as tf, sys
-
+from operator import itemgetter
 
 def main(folder,img) :
     # change this as you see fit
+    print folder
     image_path = "/home/snorloks/uploadedImages/{}".format(img)
 
     # Read in the image_data
     image_data = tf.gfile.FastGFile(image_path, 'rb').read()
 
     # Loads label file, strips off carriage return
+    labelFile = "/home/snorloks/models/{}/retrained_labels.txt".format(folder)
+    print ("The label file is {}".format(labelFile))
     label_lines = [line.rstrip() for line 
-                       in tf.gfile.GFile("/home/snorloks/models/{}/retrained_labels.txt".format(folder))]
+                       in tf.gfile.GFile(labelFile)]
 
     # Unpersists graph from file
-    with tf.gfile.FastGFile("/home/snorloks/models/{}/retrained_graph.pb".format(folder), 'rb') as f:
+    graphFile = "/home/snorloks/models/{}/retrained_graph.pb".format(folder)
+    print ("The graph file is {}".format(graphFile))
+    with tf.gfile.FastGFile(graphFile, 'rb') as f:
         graph_def = tf.GraphDef()
         graph_def.ParseFromString(f.read())
         _ = tf.import_graph_def(graph_def, name='')
@@ -24,16 +29,19 @@ def main(folder,img) :
         
         predictions = sess.run(softmax_tensor, \
                  {'DecodeJpeg/contents:0': image_data})
-        
+        sess.close()
         # Sort to show labels of first prediction in order of confidence
-        top_k = predictions[0].argsort()[-len(predictions[0]):][::-1]
+        top_k2 = predictions[0].argsort()[-len(predictions[0]):][::-1]
+        print top_k2
         results = list()
-        for node_id in top_k:
+        for node_id in top_k2:
             human_string = label_lines[node_id]
             score = predictions[0][node_id]
-            results.append({"score":score , "name" : human_string})
-            print('%s (score = %.5f)' % (human_string, score))
-        results_sorted = sorted(results, key=itemgetter('score'), reverse=True)
-        print results_sorted
+            results.append({"score":str(float("{0:.2f}".format(score*100))) , "disease" : human_string})
+            # print('%s (score = %.5f)' % (human_string, score))
+        results_sorted = sorted(results, key=lambda x: float(x["score"]))[::-1]
+        print (results_sorted)
+        crop_name = results_sorted[0]["disease"]
+        # print results_sorted
         return results_sorted
-
+    tf.reset_default_graph()

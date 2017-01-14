@@ -58,8 +58,8 @@ public class homepage extends AppCompatActivity {
         password = (EditText) findViewById(R.id.et_password) ;
         re_password = (EditText) findViewById(R.id.et_re_password) ;
         contact_no = (EditText) findViewById(R.id.et_contact_no) ;
-        login = (Button) findViewById(R.id.b_login) ;
-        register = (Button) findViewById(R.id.b_register) ;
+        login = (Button) findViewById(R.id.homepage_b_login) ;
+        register = (Button) findViewById(R.id.homepage_b_register) ;
 //        vv = (VideoView) findViewById(R.id.vv);
         logo = (ImageView) findViewById(R.id.iv_logo) ;
 
@@ -83,29 +83,12 @@ public class homepage extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                url = server_ip.concat("/login");
-                Log.d("check123", url);
-                f_name.setVisibility(View.GONE);
-                l_name.setVisibility(View.GONE);
-                password.setVisibility(View.GONE);
-                re_password.setVisibility(View.GONE);
-                contact_no.setVisibility(View.GONE);
-                email_id.setVisibility(View.GONE);
-                if (email.getVisibility() == View.VISIBLE) {
-                    if (TextUtils.isEmpty(email.getText().toString())) {
-                        Toast.makeText(homepage.this, "You forgot to enter the email id", Toast.LENGTH_SHORT).show();
-                    } else if (TextUtils.isEmpty(pass.getText().toString())) {
-                        Toast.makeText(homepage.this, "You forgot to enter the password", Toast.LENGTH_SHORT).show();
-                    } else {
-                        dialog.setMessage("Logging in");
-                        dialog.show();
-                        sendData(1);
-                    }
-                }
-                else {
-                    email.setVisibility(View.VISIBLE);
-                    pass.setVisibility(View.VISIBLE);
-                }
+
+                Intent fIntent = new Intent(homepage.this, ActivityLogin.class);
+                startActivity(fIntent);
+
+
+
             }
         });
 
@@ -113,41 +96,10 @@ public class homepage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 url = server_ip.concat("/register");
-                email.setVisibility(View.GONE);
-                pass.setVisibility(View.GONE);
-                if (f_name.getVisibility() == View.VISIBLE) {
-                    if (TextUtils.isEmpty(f_name.getText().toString())) {
-                        Toast.makeText(homepage.this, "You forgot to enter your first name", Toast.LENGTH_SHORT).show();
-                    } else if (TextUtils.isEmpty(l_name.getText().toString())) {
-                        Toast.makeText(homepage.this, "You forgot to enter your last name", Toast.LENGTH_SHORT).show();
-                    } else if (TextUtils.isEmpty(email_id.getText().toString())) {
-                        Toast.makeText(homepage.this, "You forgot to enter your email id", Toast.LENGTH_SHORT).show();
-                    } else if (TextUtils.isEmpty(contact_no.getText().toString())) {
-                        Toast.makeText(homepage.this, "You forgot to enter your contact number", Toast.LENGTH_SHORT).show();
-                    } else if (TextUtils.isEmpty(password.getText().toString())) {
-                        Toast.makeText(homepage.this, "You forgot to set the password", Toast.LENGTH_SHORT).show();
-                    } else if (TextUtils.isEmpty(re_password.getText().toString())) {
-                        Toast.makeText(homepage.this, "You forgot to retype the password", Toast.LENGTH_SHORT).show();
-                    } else if (!password.getText().toString().equals(re_password.getText().toString())) {
-                        Toast.makeText(homepage.this, "Sorry! Password did not match", Toast.LENGTH_SHORT).show();
-                    } else {
-                        dialog.setMessage("Signing you up\n  Please Wait... ");
-                        dialog.show();
-                        sendData(0);
-                    }
-                }
-                else {
-                    f_name.setVisibility(View.VISIBLE);
-                    l_name.setVisibility(View.VISIBLE);
-                    password.setVisibility(View.VISIBLE);
-                    re_password.setVisibility(View.VISIBLE);
-                    contact_no.setVisibility(View.VISIBLE);
-                    email_id.setVisibility(View.VISIBLE);
 
-                }
 
-//                Intent register_new_user = new Intent("com.example.ayush.krishi_help.register");
-//                startActivity(register_new_user);
+                Intent fIntent = new Intent(homepage.this, ActivityRegister.class);
+                startActivity(fIntent);
             }
         });
 

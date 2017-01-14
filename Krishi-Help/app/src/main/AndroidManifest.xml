@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
 
     <application
         android:allowBackup="true"
@@ -75,6 +78,42 @@
                 <action android:name="com.example.ayush.krishi_help.ActivityPricesTabbed" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.MainPageMadan"
+            android:label="activity_madan_miain"
+            android:parentActivityName=".activities.MainPage"
+            android:theme="@style/AppTheme.NoActionBar">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+            <intent-filter>
+                <action android:name="com.example.ayush.krishi_help.ActivityPricesTabbed" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.ActiveHelpline"
+            android:label="@string/helpline_activity_title"
+            android:parentActivityName=".activities.MainPage"
+            >
+            <intent-filter>
+                <action android:name="com.example.ayush.krishi_help.ActivityPricesTabbed" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!--Login Activity-->
+        <activity android:name=".activities.ActivityLogin"
+            android:parentActivityName=".activities.homepage">
+
+        </activity>
+
+        <!--SignUp Activity-->
+        <activity android:name=".activities.ActivityRegister"
+            android:parentActivityName=".activities.homepage">
+
         </activity>
     </application>
 

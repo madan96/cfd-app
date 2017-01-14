@@ -29,105 +29,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@android:color/transparent"/>
-
-    <!--Starting to add login edit text-->
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:textColorHint="#ddd"
-        android:textColor="#fff"
-        android:hint="Email"
-        android:visibility="gone"
-        android:ems="10"
-        android:id="@+id/et_login_email"
-        android:layout_gravity="center_horizontal" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:visibility="gone"
-        android:textColorHint="#ddd"
-        android:textColor="#fff"
-        android:hint="Password"
-        android:ems="10"
-        android:id="@+id/et_login_pass"
-        android:layout_gravity="center_horizontal" />
-<!--ending login edit text-->
-<!--Stating edit text for register-->
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:visibility="gone"
-        android:hint="First Name"
-        android:textColorHint="#ddd"
-        android:textColor="#fff"
-        android:ems="10"
-        android:id="@+id/et_f_name"
-        android:layout_gravity="center_horizontal" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:visibility="gone"
-        android:textColorHint="#ddd"
-        android:textColor="#fff"
-        android:hint="Last Name"
-        android:ems="10"
-        android:id="@+id/et_l_name"
-        android:layout_gravity="center_horizontal" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Email"
-        android:textColorHint="#ddd"
-        android:textColor="#fff"
-        android:visibility="gone"
-        android:ems="10"
-        android:id="@+id/et_email"
-        android:layout_gravity="center_horizontal" />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
-        android:visibility="gone"
-        android:hint="Contact Number"
-        android:ems="10"
-        android:textColorHint="#ddd"
-        android:textColor="#fff"
-        android:id="@+id/et_contact_no"
-        android:layout_gravity="center_horizontal" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Password"
-        android:visibility="gone"
-        android:ems="10"
-        android:textColorHint="#ddd"
-        android:textColor="#fff"
-        android:id="@+id/et_password"
-        android:layout_gravity="center_horizontal" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Retype password"
-        android:visibility="gone"
-        android:ems="10"
-        android:textColorHint="#ddd"
-        android:textColor="#fff"
-        android:id="@+id/et_re_password"
-        android:layout_gravity="center_horizontal" />
-    <!--Ending edit text for register-->
-
-
     <View
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -150,7 +51,7 @@
         android:textStyle="bold"
         android:textAppearance="@android:style/TextAppearance.Medium"
         android:textColor="#fff"
-        android:id="@+id/b_login" />
+        android:id="@+id/homepage_b_login" />
 
     <Button
         android:layout_width="0dp"
@@ -163,7 +64,7 @@
         android:text="Register"
         android:textAppearance="@android:style/TextAppearance.Medium"
         android:textColor="#fff"
-        android:id="@+id/b_register"
+        android:id="@+id/homepage_b_register"
         android:layout_gravity="right" />
     </LinearLayout>
 </LinearLayout>

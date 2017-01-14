@@ -3,9 +3,13 @@ import MySQLdb
 import traceback
 import json
 import label_image
+
 import tagCheck
 import os
 from werkzeug.datastructures import ImmutableMultiDict
+import sys
+import json
+import pickle
 app = Flask(__name__)
 cursor = None
 db = None
@@ -111,6 +115,9 @@ def news() :
 @app.route('/crop_check', methods = ['GET', 'POST'])
 def get_crop(flag=0):
 	print "Got a file"
+	if flag :
+		result = label_image.main("first_layer","disease_img.jpg")
+		return result[0]["disease"]
 	if request.method == 'POST':
 	   try :
 	   	f = request.files['file']
@@ -118,11 +125,11 @@ def get_crop(flag=0):
 	   	 return jsonify({"status":0})
 	   try :
 	   	return_dict = dict()
-		f.save("/home/snorloks/uploadedImages/crop_img.jpeg")
+		f.save("/home/snorloks/uploadedImages/crop_img.jpg")
 		#flag = tagCheck.main()
 		flag=1
 		if flag :
-			return_dict["data"] = label_image.main("first_layer","crop_img.jpeg")
+			return_dict["data"] = label_image.main("first_layer","crop_img.jpg")
 			return_dict["status"] = 1
 			return jsonify(return_dict)
 		else :
@@ -130,14 +137,11 @@ def get_crop(flag=0):
 	   except :
 	   	print traceback.format_exc()
 		return jsonify({"status":0})
-	if flag :
-		result = label_image.main("first_layer","disease_img.jpeg")
-		return result[0]["human_string"]
 
 
 @app.route('/disease_check', methods = ['GET', 'POST'])
 def get_disease() :
-	print "Finding disease for {}".format(crop_name)
+	# print "Finding disease for {}".format(crop_name)
 	if request.method == 'POST':
 	   try :
 	   	f = request.files['file']
@@ -145,12 +149,20 @@ def get_disease() :
 	   	 return jsonify({"status":0})
 	   try :
 	   	return_dict = dict()
-		f.save("/home/snorloks/uploadedImages/disease_img.jpeg")
+		f.save("/home/snorloks/uploadedImages/disease_img.jpg")
 		#flag = tagCheck.main()
 		flag=1
-		crop_name = get_crop(1)
 		if flag :
-			return_dict["data"] = label_image.main(crop_name,"disease_img.jpeg")
+			crop_name = get_crop(1)
+			print ("The crop is {}".format(crop_name))
+			# label_image.main("banana","disease_img.jpg")
+			# label_image.main("first_layer","disease_img.jpg")
+			os.system("python /home/snorloks/models/{}/label_image.py {} {}".format(crop_name,"disease_img.jpg",crop_name))
+			result = pickle.load(open("/home/snorloks/result.pickle","r"))
+			print ("THe result is {}".format(result))
+			# print ("The crop is {}".format(crop_name))
+			return_dict["data"] = result
+			# return_dict["data"] = label_image.main(crop_name,"disease_img.jpg")
 			return_dict["status"] = 1
 			return jsonify(return_dict)
 		else :
