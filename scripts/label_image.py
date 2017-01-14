@@ -27,8 +27,13 @@ def main(folder,img) :
         
         # Sort to show labels of first prediction in order of confidence
         top_k = predictions[0].argsort()[-len(predictions[0]):][::-1]
-        
+        results = list()
         for node_id in top_k:
             human_string = label_lines[node_id]
             score = predictions[0][node_id]
+            results.append({"score":score , "name" : human_string})
             print('%s (score = %.5f)' % (human_string, score))
+        results_sorted = sorted(results, key=itemgetter('score'), reverse=True)
+        print results_sorted
+        return results_sorted
+

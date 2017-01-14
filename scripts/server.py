@@ -109,7 +109,7 @@ def news() :
 	return jsonify({"data":news_data})
 
 @app.route('/crop_check', methods = ['GET', 'POST'])
-def upload_file():
+def get_crop(flag=0):
 	print "Got a file"
 	if request.method == 'POST':
 	   try :
@@ -130,9 +130,13 @@ def upload_file():
 	   except :
 	   	print traceback.format_exc()
 		return jsonify({"status":0})
+	if flag :
+		result = label_image.main("first_layer","disease_img.jpeg")
+		return result[0]["human_string"]
+
 
 @app.route('/disease_check', methods = ['GET', 'POST'])
-def get_disease(crop_name) :
+def get_disease() :
 	print "Finding disease for {}".format(crop_name)
 	if request.method == 'POST':
 	   try :
@@ -144,8 +148,9 @@ def get_disease(crop_name) :
 		f.save("/home/snorloks/uploadedImages/disease_img.jpeg")
 		#flag = tagCheck.main()
 		flag=1
+		crop_name = get_crop(1)
 		if flag :
-			return_dict["data"] = label_image.main("","disease_img.jpeg")
+			return_dict["data"] = label_image.main(crop_name,"disease_img.jpeg")
 			return_dict["status"] = 1
 			return jsonify(return_dict)
 		else :
