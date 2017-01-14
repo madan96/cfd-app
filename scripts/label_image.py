@@ -10,10 +10,10 @@ def main() :
 
     # Loads label file, strips off carriage return
     label_lines = [line.rstrip() for line 
-                       in tf.gfile.GFile("/home/snorloks/models/first_layer/tf_files/retrained_labels.txt")]
+                       in tf.gfile.GFile("/home/snorloks/models/first_layer/retrained_labels.txt")]
 
     # Unpersists graph from file
-    with tf.gfile.FastGFile("/home/snorloks/models/first_layertf_files/retrained_graph.pb", 'rb') as f:
+    with tf.gfile.FastGFile("/home/snorloks/models/first_layer/retrained_graph.pb", 'rb') as f:
         graph_def = tf.GraphDef()
         graph_def.ParseFromString(f.read())
         _ = tf.import_graph_def(graph_def, name='')

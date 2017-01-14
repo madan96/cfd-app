@@ -119,7 +119,8 @@ def upload_file():
 	   try :
 	   	return_dict = dict()
 		f.save("/home/snorloks/uploadedImages/img.jpeg")
-		flag = tagCheck.main()
+		#flag = tagCheck.main()
+		flag=1
 		if flag :
 			return_dict["data"] = label_image.main()
 			return_dict["status"] = 1
