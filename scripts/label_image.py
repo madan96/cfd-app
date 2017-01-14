@@ -10,7 +10,7 @@ def main(folder,img) :
 
     # Loads label file, strips off carriage return
     label_lines = [line.rstrip() for line 
-                       in tf.gfile.GFile("/home/snorloks/models/{}/retrained_labels.txt".format(folder))
+                       in tf.gfile.GFile("/home/snorloks/models/{}/retrained_labels.txt".format(folder))]
 
     # Unpersists graph from file
     with tf.gfile.FastGFile("/home/snorloks/models/{}/retrained_graph.pb".format(folder), 'rb') as f:
