@@ -173,8 +173,27 @@ def get_disease() :
 	   	print traceback.format_exc()
 		return jsonify({"status":0})	
 
-
-
+@app.route('/buynsell', methods = ['GET', 'POST'])
+def buynsell():
+    buysell_json = request.form.to_dict()
+    print (buysell_json)
+    if cursor == None :
+        connect_database()
+    query = "INSERT INTO cropsale (crop_name,price,qty,farmer_id,description) values ('%s',%d, %d,'%s','%s') " % (buysell_json['crop'] ,int(buysell_json['price']), int(buysell_json['quantity']), buysell_json['email'],buysell_json['description'])
+    try :
+        cursor.execute(query)
+        db.commit()
+        return jsonify({"status":"ok"})
+    except Exception as e:
+    	print traceback.format_exc()
+    	print "In the exception "
+    if e[0] == 1062 :
+        print "Duplicate entry"
+        print jsonify({"status":"dup_user"})
+        return jsonify({"status":"dup_user"})
+    # print traceback.format_exc()
+    return '{"a":"a"}'
+    db.rollback()
 
 if __name__ == '__main__':
 	try :
