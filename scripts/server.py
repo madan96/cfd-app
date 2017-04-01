@@ -32,17 +32,24 @@ def login():
 	if cursor == None :
 		connect_database()
 	credentials_json = request.form.to_dict()
-	query = "SELECT password FROM users WHERE Email= '%s' " % (credentials_json['email'])
+	print (credentials_json)
+	query = "SELECT * FROM users WHERE Email= '%s' " % (credentials_json['email'])
 	try :
 		cursor.execute(query)
-		password = cursor.fetchone()[0]
-		# print password
+		dbdata = cursor.fetchone()
+		print (dbdata)
+		password = dbdata[0]
+		print password
+		print credentials_json['pass']
 		db.commit()
 		if password == credentials_json['pass'] :	
-			return '{"status":"1"}'
+			print ("Pass cor")
+			return jsonify({"status":"1","user_type":dbdata[4]})
 		else :
+			print ("pass wrong")
 			return '{"status":"0"}'
-	except TypeError :
+	except TypeError as e :
+		print e
 		return '{"status":"noemail"}'
 	except Exception as e:
 		print e
@@ -116,7 +123,7 @@ def news() :
 def get_crop(flag=0):
 	print "Got a file"
 	if flag :
-		tag_flag = tagCheck.main(disease_img.jpg)
+		tag_flag = tagCheck.main("disease_img.jpg")
 		if tag_flag :
 			result = label_image.main("first_layer_new","disease_img.jpg")
 			return result[0]["disease"]
