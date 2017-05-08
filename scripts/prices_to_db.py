@@ -1,6 +1,7 @@
+
 import urllib2
 import re
-from azure.storage.table import TableService, Entity
+#from azure.storage.table import TableService, Entity
 from bs4 import BeautifulSoup
 import json
 

@@ -1,6 +1,6 @@
 import urllib2
 import re
-from azure.storage.table import TableService, Entity
+#from azure.storage.table import TableService, Entity
 from bs4 import BeautifulSoup
 import json
 
@@ -35,10 +35,12 @@ def extract_news():
 			pass
 
 	i=0
-
+	news_data_list = news_data_list[:10]
+	taglines = taglines[:10]
+	links = links[:10]
 	for tagline in taglines:
 		obj = {}
-		obj['headline'] = str(tagline)
+		obj['headline'] = tagline
 		obj['news'] = str(news_data_list[i])
 		obj['link'] = str(links[i])
 		obj['img_url'] = news_imgurl[i]
