@@ -44,7 +44,7 @@ def login():
 		db.commit()
 		if password == credentials_json['pass'] :	
 			print ("Pass cor")
-			return jsonify({"status":"1","user_type":dbdata[4]})
+			return jsonify({"status":"1","user_type":dbdata[5]})
 		else :
 			print ("pass wrong")
 			return '{"status":"0"}'
@@ -129,11 +129,11 @@ def get_crop(flag=0):
 			return result[0]["disease"]
 	if request.method == 'POST':
 	   try :
-	   	f = request.files['file']
+		f = request.files['file']
 	   except :
-	   	 return jsonify({"status":0})
+		 return jsonify({"status":0})
 	   try :
-	   	return_dict = dict()
+		return_dict = dict()
 		f.save("/home/snorloks/uploadedImages/crop_img.jpg")
 		tag_flag = tagCheck.main("crop_img.jpg")
 		# flag=1
@@ -144,7 +144,7 @@ def get_crop(flag=0):
 		else :
 			return jsonify({"status" :2})
 	   except :
-	   	print traceback.format_exc()
+		print traceback.format_exc()
 		return jsonify({"status":0})
 
 
@@ -153,11 +153,11 @@ def get_disease() :
 	# print "Finding disease for {}".format(crop_name)
 	if request.method == 'POST':
 	   try :
-	   	f = request.files['file']
+		f = request.files['file']
 	   except :
-	   	 return jsonify({"status":0})
+		 return jsonify({"status":0})
 	   try :
-	   	return_dict = dict()
+		return_dict = dict()
 		f.save("/home/snorloks/uploadedImages/disease_img.jpg")
 		flag = tagCheck.main("disease_img.jpg")
 		# flag=1
@@ -177,31 +177,162 @@ def get_disease() :
 		else :
 			return jsonify({"status" :2})
 	   except :
-	   	print traceback.format_exc()
+		print traceback.format_exc()
 		return jsonify({"status":0})	
 
 @app.route('/buynsell', methods = ['GET', 'POST'])
 def buynsell():
-    buysell_json = request.form.to_dict()
-    print (buysell_json)
-    if cursor == None :
-        connect_database()
-    query = "INSERT INTO cropsale (crop_name,price,qty,farmer_id,description) values ('%s',%d, %d,'%s','%s') " % (buysell_json['crop'] ,int(buysell_json['price']), int(buysell_json['quantity']), buysell_json['email'],buysell_json['description'])
-    try :
-        cursor.execute(query)
-        db.commit()
-        return jsonify({"status":"ok"})
-    except Exception as e:
-    	print traceback.format_exc()
-    	print "In the exception "
-    if e[0] == 1062 :
-        print "Duplicate entry"
-        print jsonify({"status":"dup_user"})
-        return jsonify({"status":"dup_user"})
-    # print traceback.format_exc()
-    return '{"a":"a"}'
-    db.rollback()
+	buysell_json = request.form.to_dict()
+	print (buysell_json)
+	if cursor == None :
+		connect_database()
+	query = "INSERT INTO cropsale (crop_name,price,qty,farmer_id,description) values ('%s',%d, %d,'%s','%s') " % (buysell_json['crop'] ,int(buysell_json['price']), int(buysell_json['quantity']), buysell_json['email'],buysell_json['description'])
+	try :
+		cursor.execute(query)
+		db.commit()
+		return jsonify({"status":"ok"})
+	except Exception as e:
+		print traceback.format_exc()
+		print "In the exception "
+	if e[0] == 1062 :
+		print "Duplicate entry"
+		print jsonify({"status":"dup_user"})
+		return jsonify({"status":"dup_user"})
+	# print traceback.format_exc()
+	return '{"a":"a"}'
+	db.rollback()
 
+@app.route('/getproducts', methods = ['GET', 'POST'])
+def getproducts():
+	userJSON = request.form.to_dict()
+	print (userJSON)
+	if cursor == None :
+		connect_database()
+	query = "SELECT * FROM cropsale WHERE farmer_id = '%s' " % userJSON['email']
+	try :
+		returnData = []
+		cursor.execute(query)
+		dbdata = cursor.fetchall()
+		print (dbdata)
+		for data in dbdata :
+			returnData.append({"crop_name":data[0] , 
+							   "price" : data[1],
+							   "quantity" : data[2],
+							   "farmer_id" : data[3],
+							   "desc" : data[4]})
+		return jsonify({"data":returnData})
+		'''
+		The data will be returned as follows : 
+		It will be a list of tuples and individual tuple has following values :
+		Index - Value
+			0 - Crop name
+			1 - price 
+			2 - quantity
+			3 - farmer_id
+			4 - desc
+		'''
+
+		# password = dbdata[0]
+		# print password
+		# print credentials_json['pass']
+		# db.commit()
+		# if password == credentials_json['pass'] :	
+		# 	print ("Pass cor")
+		# 	return jsonify({"status":"1","user_type":dbdata[4]})
+		# else :
+		# 	print ("pass wrong")
+		# 	return '{"status":"0"}'
+	except TypeError as e :
+		print e
+		return '{"status":"noprod"}'
+	except Exception as e:
+		print e
+		return "z"
+		# db.rollback()
+
+@app.route("/farmerrequestresponse" , methods=['GET','POST'])
+def FarmerRequestResponse():
+	'''
+	Data Required : 
+	"email" : (String) Email id of the farmer 
+	"requestflag" : (Boolean) True means farmer accepted the request , False means farmer rejected the request. 
+	"requestid" : Unique ID of the request 
+	'''
+	formData = request.form.to_dict()
+
+
+@app.route("/listings",methods=['GET',"POST"])
+def listings():
+	if cursor == None :
+		connect_database()
+	query = "SELECT * FROM cropsale "
+	try :
+		returnData = []
+		cursor.execute(query)
+		dbdata = cursor.fetchall()
+		print (dbdata)
+		for data in dbdata :
+			returnData.append({"crop_name":data[0] , 
+							   "price" : data[1],
+							   "quantity" : data[2],
+							   "farmer_id" : data[3],
+							   "desc" : data[4]})
+		return jsonify({"data":returnData})
+		'''
+		The data will be returned as follows : 
+		It will be a list of tuples and individual tuple has following values :
+		Index - Value
+			0 - Crop name
+			1 - price 
+			2 - quantity
+			3 - farmer_id
+			4 - desc
+		'''
+
+		# password = dbdata[0]
+		# print password
+		# print credentials_json['pass']
+		# db.commit()
+		# if password == credentials_json['pass'] :	
+		# 	print ("Pass cor")
+		# 	return jsonify({"status":"1","user_type":dbdata[4]})
+		# else :
+		# 	print ("pass wrong")
+		# 	return '{"status":"0"}'
+	except TypeError as e :
+		print e
+		return '{"status":"noprod"}'
+	except Exception as e:
+		print e
+		return "z"
+		# db.rollback()
+
+@app.route("/buycrop",methods=['GET','POST'])
+def buycrop() :
+	data = request.form.to_dict()
+	farmer_id = data["farmer_id"]
+	crop_name = data["crop_name"]
+	buyer_id = data["buyer_id"]
+	quantity = data["quantity"]
+	if cursor == None :
+		connect_database()
+	query = "INSERT INTO requests (farmer_id,crop_name,buyer_id,quantity) values ('%s','%s', '%s','%s') " % (farmer_id,crop_name,buyer_id,quantity)
+	try :
+		cursor.execute(query)
+		db.commit()
+		return jsonify({"status":"ok"})
+	except Exception as e:
+		print traceback.format_exc()
+		print "In the exception "
+		return jsonify({"status":"no"})
+		db.rollback() 
+	# if e[0] == 1062 :
+	#     print "Duplicate entry"
+	#     print jsonify({"status":"dup_user"})
+	#     return jsonify({"status":"dup_user"})
+	# # print traceback.format_exc()
+	# return '{"a":"a"}'
+	   
 if __name__ == '__main__':
 	try :
 		app.run(port=8000,debug=True,threaded=True)
