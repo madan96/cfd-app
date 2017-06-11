@@ -250,6 +250,30 @@ def getproducts():
 		return "z"
 		# db.rollback()
 
+@app.route("/requests" , methods=['GET','POST'])
+def farmerRequests() :
+	if cursor == None :
+		connect_database()
+	data = request.form.to_dict()
+	farmer_id = data["farmer_id"]
+	query = "SELECT * FROM requests WHERE farmer_id = '%s' " % farmer_id
+	try :
+		returnData = []
+		cursor.execute(query)
+		dbdata = cursor.fetchall()
+		print (dbdata)
+		for data in dbdata :
+				returnData.append({"id":data[0] , 
+							   "buyer_id" : data[2],
+							   "quantity" : data[4],
+							   "crop_name" : data[5]})
+		return jsonify({"data":returnData,"status":"ok"})
+	except TypeError as e :
+		print e
+		return '{"status":"noprod"}'
+	except Exception as e :
+		print e 
+		return '{"status":"error"}'
 @app.route("/farmerrequestresponse" , methods=['GET','POST'])
 def FarmerRequestResponse():
 	'''
@@ -258,8 +282,30 @@ def FarmerRequestResponse():
 	"requestflag" : (Boolean) True means farmer accepted the request , False means farmer rejected the request. 
 	"requestid" : Unique ID of the request 
 	'''
+	if cursor == None :
+		connect_database()
 	formData = request.form.to_dict()
-
+	requestID = formData["requestid"]
+	response = formData["response"]
+	print (response)
+	if "t" in response :
+		print (1)
+		query = "UPDATE requests SET farmer_response = '%s' WHERE id = '%s' " % ("t",requestID)
+		success = "ok"
+	elif "no" in response :
+		print (2)
+		query = "DELETE from requests WHERE id = '%s' " % (requestID)
+		success = "delok"
+	else :
+		query = "None"
+	# print (query)
+	try :
+		cursor.execute(query)
+		db.commit()
+		return jsonify({"status":success})
+	except Exception as e :
+		print (e)
+		return jsonify({"status":"no"})
 
 @app.route("/listings",methods=['GET',"POST"])
 def listings():
