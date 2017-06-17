@@ -3,7 +3,7 @@ import MySQLdb
 import traceback
 import json
 import label_image
-
+import urllib
 import tagCheck
 import os
 from werkzeug.datastructures import ImmutableMultiDict
@@ -128,13 +128,24 @@ def get_crop(flag=0):
 			result = label_image.main("first_layer_new","disease_img.jpg")
 			return result[0]["disease"]
 	if request.method == 'POST':
+	   userRequest = request.form.to_dict()
+	   print userRequest
+	   if "imageurl" in userRequest :
+	   	fileFromURLFlag = True 
+		imageURL = userRequest["imageurl"]
+		print "Got file from URL : " + imageURL
 	   try :
-		f = request.files['file']
+	   	if not fileFromURLFlag :
+			f = request.files['file']
 	   except :
 		 return jsonify({"status":0})
 	   try :
 		return_dict = dict()
-		f.save("/home/snorloks/uploadedImages/crop_img.jpg")
+		if not fileFromURLFlag :
+			f.save("/home/snorloks/uploadedImages/crop_img.jpg")
+		else :
+			urllib.urlretrieve(imageURL, "/home/snorloks/uploadedImages/crop_img.jpg")
+			print ("File Saveds")
 		tag_flag = tagCheck.main("crop_img.jpg")
 		# flag=1
 		if tag_flag :
