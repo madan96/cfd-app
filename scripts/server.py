@@ -87,21 +87,23 @@ def price():
 		for data in price_data :
 			if data['producttype'] == 'pesticide' :
 				return_list.append(data)
-		return jsonify({"data" : return_list})
+		return jsonify({"data" : return_list , "status" : 1})
 	elif user_request['request'] == 'fertilizer' :
 		return_list = list()
 		print "User requested fertilizer"
 		for data in price_data :
 			if data['producttype'] == 'fertilizer' :
 				return_list.append(data)
-		return jsonify({"data" : return_list})
+		return jsonify({"data" : return_list, "status" : 1})
 	elif user_request['request'] == 'seed' :
 		return_list = list()
 		print "User requested seed"
 		for data in price_data :
 			if data['producttype'] == 'seeds' :
 				return_list.append(data)
-		return jsonify({"data" : return_list})
+		return jsonify({"data" : return_list, "status" : 1})
+	else :
+		return jsonify({"status" : 0})
 
 
 @app.route('/check/<uuid>', methods=['GET', 'POST'])
