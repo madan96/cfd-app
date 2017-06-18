@@ -163,13 +163,24 @@ def get_crop(flag=0):
 def get_disease() :
 	# print "Finding disease for {}".format(crop_name)
 	if request.method == 'POST':
+	   userRequest = request.form.to_dict()
+	   if "imageurl" in userRequest :
+	   	fileFromURLFlag = True 
+		imageURL = userRequest["imageurl"]
+		print "Got file from URL : " + imageURL
+       
 	   try :
-		f = request.files['file']
+	   	if not fileFromURLFlag :
+			f = request.files['file']
 	   except :
 		 return jsonify({"status":0})
 	   try :
 		return_dict = dict()
-		f.save("/home/snorloks/uploadedImages/disease_img.jpg")
+		if not fileFromURLFlag :
+			f.save("/home/snorloks/uploadedImages/disease_img.jpg")
+		else :
+			urllib.urlretrieve(imageURL, "/home/snorloks/uploadedImages/disease_img.jpg")
+		print ("File Saveds")
 		flag = tagCheck.main("disease_img.jpg")
 		# flag=1
 		if flag :
